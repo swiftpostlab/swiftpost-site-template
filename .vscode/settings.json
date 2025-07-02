@@ -1,4 +1,16 @@
 {
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "json.format.enable": true,
+  "typescript.tsdk": "./node_modules/typescript/lib",
   "cSpell.words": [
     "swiftpost"
   ]
