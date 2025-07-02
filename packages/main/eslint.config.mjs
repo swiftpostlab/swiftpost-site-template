@@ -1,6 +1,6 @@
 // @ts-check
 
-import { eslintBaseConfig } from '@swiftpost/config-next/eslintBaseConfig.mjs'
+import { eslintBaseConfig } from '@swiftpost/config/eslintBaseConfig.mjs'
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 import { dirname } from 'path'

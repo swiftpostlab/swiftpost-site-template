@@ -1,5 +1,5 @@
 {
-  "name": "@swiftpost/config-next",
+  "name": "@swiftpost/config",
   "version": "0.0.1",
   "devDependencies": {
     "@eslint/js": "^9",

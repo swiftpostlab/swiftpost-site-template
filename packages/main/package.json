@@ -14,7 +14,7 @@
     "next": "15.3.4"
   },
   "peerDependencies": {
-    "@swiftpost/config-next": "*",
+    "@swiftpost/config": "*",
     "typescript": "*"
   }
 }
