@@ -1,6 +1,10 @@
 {
   "name": "@swiftpost/config",
   "version": "0.0.1",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "yarn lint --fix"
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@eslint/js": "^9",
