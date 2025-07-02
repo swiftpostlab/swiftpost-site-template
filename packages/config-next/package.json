@@ -1,0 +1,21 @@
+{
+  "name": "@swiftpost/config-next",
+  "version": "0.0.1",
+  "devDependencies": {
+    "@eslint/js": "^9",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22",
+    "eslint": "^9",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "globals": "^15.12.0",
+    "typescript-eslint": "^8.14.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint-config-next": "15.3.4",
+    "@eslint/eslintrc": "^3"
+  },
+  "peerDependencies": {
+    "typescript": "*"
+  }
+}
