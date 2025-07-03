@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import AppRouterCacheProvider from '@swiftpost/elysium-ui/src/core/AppRouterCacheProvider';
+import AppRouterCacheProvider from '@swiftpost/elysium/src/core/AppRouterCacheProvider';
+import ThemeProvider from '@swiftpost/elysium/src/core/ThemeProvider';
+import { theme, mainFont } from '@swiftpost/elysium/src/themes/base';
 
 export const metadata: Metadata = {
   title: 'SwiftPost Next Static Template',
@@ -13,9 +15,11 @@ interface Props {
 
 const RootLayout: React.FC<Props> = ({ children }) => {
   return (
-    <html lang="en">
+    <html lang="en" className={mainFont.variable}>
       <body>
-        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+        <AppRouterCacheProvider>
+          <ThemeProvider theme={theme}>{children}</ThemeProvider>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

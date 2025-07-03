@@ -1,0 +1,24 @@
+{
+  "name": "@swiftpost/elysium",
+  "version": "0.0.1",
+  "author": "Fabio Colella <fcole90@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "yarn lint --fix"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "@emotion/cache": "^11.14.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/material": "^7.2.0",
+    "@mui/material-nextjs": "^7.2.0"
+  },
+  "peerDependencies": {
+    "next": "^15",
+    "react": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0 || ^19.0.0",
+    "typescript": "*"
+  }
+}
