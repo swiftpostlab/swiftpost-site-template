@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { AppRouterCacheProvider } from '@swiftpost/elysium-ui/src/core';
 
 export const metadata: Metadata = {
   title: 'SwiftPost Next Static Template',
@@ -13,7 +14,9 @@ interface Props {
 const RootLayout: React.FC<Props> = ({ children }) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+      </body>
     </html>
   );
 };
