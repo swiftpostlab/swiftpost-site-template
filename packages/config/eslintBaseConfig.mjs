@@ -34,6 +34,7 @@ export const eslintBaseConfig = tseslint.config(
           ignoreRestSiblings: true,
         },
       ],
+      'react/prop-types': 'off',
     },
     languageOptions: {
       parserOptions: {
