@@ -1,10 +1,14 @@
-import PageLayout from '@/layouts/PageLayout';
+import PageLayout from '@swiftpost/elysium/layouts/PageLayout';
+import Text from '@swiftpost/elysium/ui/Text';
 
 const Home: React.FC = () => {
   return (
-    <PageLayout footerChildren={<>This is a footer</>}>
-      <h1>Hello template</h1>
-    </PageLayout>
+    <PageLayout
+      elements={{
+        mainContent: <Text variant="h1">Hello template</Text>,
+        footerContent: <Text>This is a footer</Text>,
+      }}
+    />
   );
 };
 
