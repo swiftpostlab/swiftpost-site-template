@@ -24,7 +24,10 @@ interface Props {
   sx?: SxProps;
 }
 
-const PageLayout: React.FC<Props> = ({ elements, slotProps, sx }) => {
+/**
+ * A simple stack layout with an optional footer sticked at the bottom.
+ */
+const StackLayout: React.FC<Props> = ({ elements, slotProps, sx }) => {
   return (
     <Stack sx={[{ height: '100%' }, ...spreadSx(sx)]}>
       <Box
@@ -42,5 +45,5 @@ const PageLayout: React.FC<Props> = ({ elements, slotProps, sx }) => {
   );
 };
 
-export type PageLayoutProps = Props;
-export default memo(PageLayout);
+export type StackLayoutProps = Props;
+export default memo(StackLayout);
