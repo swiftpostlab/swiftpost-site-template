@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import AppRouterCacheProvider from '@swiftpost/elysium/src/core/AppRouterCacheProvider';
-import ThemeProvider from '@swiftpost/elysium/src/core/ThemeProvider';
-import { theme, mainFont } from '@swiftpost/elysium/src/themes/gamut';
+import AppRouterCacheProvider from '@swiftpost/elysium/core/AppRouterCacheProvider';
+import ThemeProvider from '@swiftpost/elysium/core/ThemeProvider';
+import { theme, mainFont } from '@swiftpost/elysium/themes/gamut';
 
 export const metadata: Metadata = {
   title: 'SwiftPost Next Static Template',
