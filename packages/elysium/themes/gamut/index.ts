@@ -4,6 +4,13 @@ import { createTheme } from '@mui/material/styles';
 import { Roboto } from 'next/font/google';
 
 export const theme = createTheme({
+  components: {
+    MuiUseMediaQuery: {
+      defaultProps: {
+        noSsr: true,
+      },
+    },
+  },
   typography: {
     fontFamily: 'var(--font-roboto)',
   },
