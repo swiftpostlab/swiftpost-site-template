@@ -1,10 +1,10 @@
-import Page from '@/layouts/Page';
+import PageLayout from '@/layouts/PageLayout';
 
 const Home: React.FC = () => {
   return (
-    <Page>
+    <PageLayout footerChildren={<>This is a footer</>}>
       <h1>Hello template</h1>
-    </Page>
+    </PageLayout>
   );
 };
 
