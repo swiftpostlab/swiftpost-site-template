@@ -29,15 +29,21 @@ interface Props {
  */
 const StackLayout: React.FC<Props> = ({ elements, slotProps, sx }) => {
   return (
-    <Stack sx={[{ height: '100%' }, ...spreadSx(sx)]}>
+    <Stack sx={[{ height: '100%', width: '100%' }, ...spreadSx(sx)]}>
       <Box
         component="main"
-        sx={[{ height: '100%' }, ...spreadSx(slotProps?.main?.sx)]}
+        sx={[
+          { height: '100%', width: '100%' },
+          ...spreadSx(slotProps?.main?.sx),
+        ]}
       >
         {elements.mainContent}
       </Box>
       {elements.footerContent != null && (
-        <Box component="footer" sx={slotProps?.footer?.sx}>
+        <Box
+          component="footer"
+          sx={[{ width: '100%' }, ...spreadSx(slotProps?.footer?.sx)]}
+        >
           {elements.footerContent}
         </Box>
       )}
