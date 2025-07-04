@@ -18,6 +18,11 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Deploy on GitHub Pages
+
+The CI of this project already contains the needed setup to deploy it on GitHub Pages.
+However, for the first setup, you my need to follow [these additional steps](https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-first-deployment-with-github_token).
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
