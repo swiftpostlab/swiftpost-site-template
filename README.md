@@ -4,7 +4,7 @@ Batteries included Next template
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## Getting Started on local
 
 First, run the development server:
 
@@ -21,7 +21,15 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## Deploy on GitHub Pages
 
 The CI of this project already contains the needed setup to deploy it on GitHub Pages.
+
+### Issues with the first deploy
+
 However, for the first setup, you my need to follow [these additional steps](https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-first-deployment-with-github_token).
+
+### Issues with subpath (broken assets)
+
+If your website is for a GitHub project, you may need to configure the base path in the `next.config.js` file. For example,
+for this project it is `basePath: '/swiftpost-next-static-template'`.
 
 ## Learn More
 
@@ -31,9 +39,3 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
