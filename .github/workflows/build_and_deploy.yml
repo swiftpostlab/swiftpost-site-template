@@ -1,8 +1,8 @@
 name: Build and Deploy Personal Website
 on: [push, pull_request]
 jobs:
-  build_deploy_next:
-    name: Build and Deploy Next
+  build_deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
 
