@@ -19,7 +19,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Link website
+      - name: Lint website
         run: "yarn lint"
 
       - name: Build website
