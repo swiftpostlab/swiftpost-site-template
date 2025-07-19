@@ -53,7 +53,24 @@ const Home: React.FC = () => {
             </ContentFittedStack>
           </Stack>
         ),
-        footerContent: <Text>This is a footer</Text>,
+        footerContent: (
+          <ContentFittedStack
+            minHeight={(theme) => theme.spacing(6)}
+            alignItems="center"
+            contentMaxWidth={(theme) => theme.breakpoints.values.lg}
+            containerSx={(theme) => ({
+              backgroundColor: 'black',
+              padding: theme.spacing(2),
+            })}
+          >
+            <Text color="white" gutterBottom>
+              Elysium UI / Gamut Theme / SwiftPost Template.
+            </Text>
+            <Text color="white" gutterBottom>
+              Copyright © SwiftPostLab | Fabio Colella 2025.
+            </Text>
+          </ContentFittedStack>
+        ),
       }}
     />
   );
