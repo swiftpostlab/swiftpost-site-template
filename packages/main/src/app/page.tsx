@@ -19,9 +19,7 @@ const Logo: React.FC = () => (
 const Menu: React.FC = () => {
   const theme = useTheme();
   return (
-    <Stack direction="row" spacing={theme.spacing(0.5)}>
-      <Logo />
-      <Menu />
+    <Stack direction="row" spacing={theme.spacing(2)}>
       {['Home', 'Blog', 'Portfolio', 'About', 'Contact'].map((item) => (
         <Text key={item}>{item}</Text>
       ))}
