@@ -45,6 +45,7 @@ const Home: React.FC = () => {
               direction="row"
               alignItems="center"
               contentMaxWidth={(theme) => theme.breakpoints.values.lg}
+              containerProps={{ padding: (theme) => theme.spacing(2) }}
             >
               <Stack flex={1}>
                 <Logo />
@@ -58,10 +59,12 @@ const Home: React.FC = () => {
             minHeight={(theme) => theme.spacing(6)}
             alignItems="center"
             contentMaxWidth={(theme) => theme.breakpoints.values.lg}
-            containerSx={(theme) => ({
-              backgroundColor: 'black',
-              padding: theme.spacing(2),
-            })}
+            margin={(theme) => theme.spacing(2)}
+            containerProps={{
+              sx: {
+                backgroundColor: 'black',
+              },
+            }}
           >
             <Text color="white" gutterBottom>
               Elysium UI / Gamut Theme / SwiftPost Template.

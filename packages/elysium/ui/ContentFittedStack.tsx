@@ -2,8 +2,7 @@ import Stack, { StackProps } from './Stack';
 
 interface Props extends Exclude<StackProps, 'maxWidth' | 'width'> {
   contentMaxWidth: StackProps['maxWidth'];
-  containerAlignItems?: StackProps['alignItems'];
-  containerSx?: StackProps['sx'];
+  containerProps?: StackProps;
 }
 
 /**
@@ -11,16 +10,15 @@ interface Props extends Exclude<StackProps, 'maxWidth' | 'width'> {
  */
 const ContentFittedStack: React.FC<Props> = ({
   contentMaxWidth,
-  containerAlignItems,
-  containerSx,
+  containerProps,
   children,
   ...otherProps
 }) => {
   return (
     <Stack
       width="100%"
-      alignItems={containerAlignItems ?? 'center'}
-      sx={containerSx}
+      alignItems={containerProps?.alignItems ?? 'center'}
+      {...containerProps}
     >
       <Stack width="100%" maxWidth={contentMaxWidth} {...otherProps}>
         {children}
