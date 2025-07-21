@@ -3,29 +3,9 @@
 import StackLayout from '@swiftpost/elysium/layouts/StackLayout';
 import Text from '@swiftpost/elysium/ui/Text';
 import Stack from '@swiftpost/elysium/ui/Stack';
-import { useTheme } from '@swiftpost/elysium/ui/useTheme';
 import ContentFittedStack from '@swiftpost/elysium/ui/ContentFittedStack';
-import { blue } from '@swiftpost/elysium/colors/material';
-
-const Logo: React.FC = () => (
-  <Text variant="h3">
-    <Text variant="h3" component="span" fontWeight="bold" color={blue['A400']}>
-      El
-    </Text>
-    ysium
-  </Text>
-);
-
-const Menu: React.FC = () => {
-  const theme = useTheme();
-  return (
-    <Stack direction="row" spacing={theme.spacing(2)}>
-      {['Home', 'Blog', 'Portfolio', 'About', 'Contact'].map((item) => (
-        <Text key={item}>{item}</Text>
-      ))}
-    </Stack>
-  );
-};
+import Menu from '@/components/Menu';
+import Logo from '@/components/Logo';
 
 const Home: React.FC = () => {
   return (
@@ -37,7 +17,7 @@ const Home: React.FC = () => {
               height={(theme) => theme.spacing(4)}
               width="100%"
               sx={{
-                backgroundColor: blue[900],
+                backgroundColor: 'primary.dark',
               }}
             ></Stack>
             <ContentFittedStack
