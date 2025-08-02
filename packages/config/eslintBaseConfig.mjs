@@ -22,6 +22,7 @@ export const eslintBaseConfig = tseslint.config(
       curly: ['error', 'all'],
       'no-useless-rename': 'error',
       'no-unused-vars': 'off',
+      '@typescript-eslint/restrict-template-expressions': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
