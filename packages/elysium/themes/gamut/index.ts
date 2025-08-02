@@ -2,20 +2,10 @@
 
 import { createTheme } from '@mui/material/styles';
 import { Roboto } from 'next/font/google';
+import { staticThemeOptions } from './static';
 
 export const theme = createTheme({
-  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-  spacing: (factor: number) => `${0.5 * factor}rem`,
-  components: {
-    MuiUseMediaQuery: {
-      defaultProps: {
-        noSsr: true,
-      },
-    },
-  },
-  typography: {
-    fontFamily: 'var(--font-roboto)',
-  },
+  ...staticThemeOptions,
 });
 
 export const mainFont = Roboto({
