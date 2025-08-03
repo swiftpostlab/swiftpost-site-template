@@ -94,16 +94,16 @@ To learn more about GitHub Pages, take a look at the following resources:
 
 ## TODO
 
-- [] Create a minimal functioning blog template (header, footer, menu, main page, article pages, about, contact)
-- [] Add markdown support in blog posts
-- [] Create a setup script for easy adoption (e.g. set base path, set this repo as upstream)
-- [] Sitemap generation, robots, SEO improvements
-- [] Additional easy customization options (e.g. custom colors, fonts, etc.) without changing the theme
-- [] Add documentation on how to use components and themes
-- [] Add documentation on how to extend components and themes
-- [] Add GA optional tracking, GDPR and cookie consent
-- [] Add support for other languages
-- [] Add gallery component
-- [] Add carousel component
-- [] Add FAP component
-- [] Add payment option component with major 3rd party payment providers (e.g. PayPal, Stripe, Klarna)
+- [ ] Create a minimal functioning blog template (header, footer, menu, main page, article pages, about, contact)
+- [ ] Add markdown support in blog posts
+- [ ] Create a setup script for easy adoption (e.g. set base path, set this repo as upstream)
+- [ ] Sitemap generation, robots, SEO improvements
+- [ ] Additional easy customization options (e.g. custom colors, fonts, etc.) without changing the theme
+- [ ] Add documentation on how to use components and themes
+- [ ] Add documentation on how to extend components and themes
+- [ ] Add GA optional tracking, GDPR and cookie consent
+- [ ] Add support for other languages
+- [ ] Add gallery component
+- [ ] Add carousel component
+- [ ] Add FAP component
+- [ ] Add payment option component with major 3rd party payment providers (e.g. PayPal, Stripe, Klarna)
