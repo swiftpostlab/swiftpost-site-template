@@ -1,4 +1,4 @@
-# @swiftpost/swift-site-template
+# @swiftpost/swiftpost-site-template
 
 Batteries included website template.
 
@@ -54,6 +54,8 @@ However, for the first setup, you my need to follow [these additional steps](htt
 If your website is for a GitHub project, you may need to configure the base path in the `next.config.js` file.
 For example, for this project it is `basePath: '/swiftpost-next-static-template'`.
 
+---
+
 ## Learn More
 
 ### Elysium UI and Material UI
@@ -87,6 +89,8 @@ To learn more about GitHub Pages, take a look at the following resources:
 - [What is GitHub Pages?](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages) - learn about what GitHub Pages is and how it works
 - [Interactive Tutorial](https://github.com/skills/github-pages) - an interactive tutorial that will help you understand the basics of GitHub Pages and deploy your website
 - [Custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site) - learn how to configure a custom domain for your GitHub Pages site
+
+---
 
 ## TODO
 
