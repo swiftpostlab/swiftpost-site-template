@@ -1,7 +1,7 @@
 'use client';
 
-import Text from '@swiftpost/elysium/ui/Text';
-import Stack from '@swiftpost/elysium/ui/Stack';
+import Text from '@swiftpost/elysium/ui/base/Text';
+import Stack from '@swiftpost/elysium/ui/base/Stack';
 import { useTheme } from '@swiftpost/elysium/ui/useTheme';
 import useMediaQuery from '@swiftpost/elysium/ui/useMediaQuery';
 import MenuIcon from '@mui/icons-material/Menu';

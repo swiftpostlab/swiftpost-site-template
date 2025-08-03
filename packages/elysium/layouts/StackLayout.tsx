@@ -1,7 +1,7 @@
 import type { SxProps } from '../ui/types';
 import { spreadSx } from '../utils/styles/sxProps';
-import Stack from '../ui/Stack';
-import Box from '../ui/Box';
+import Stack from '../ui/base/Stack';
+import Box from '../ui/base/Box';
 import { memo } from 'react';
 
 interface MainProps {

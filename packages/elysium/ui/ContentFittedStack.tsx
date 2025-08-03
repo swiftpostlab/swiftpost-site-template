@@ -1,4 +1,4 @@
-import Stack, { StackProps } from './Stack';
+import Stack, { StackProps } from './base/Stack';
 
 interface Props extends Exclude<StackProps, 'maxWidth' | 'width'> {
   contentMaxWidth: StackProps['maxWidth'];

@@ -1,4 +1,4 @@
-import Text from '@swiftpost/elysium/ui/Text';
+import Text from '@swiftpost/elysium/ui/base/Text';
 
 const Logo: React.FC = () => (
   <Text variant="h3">
