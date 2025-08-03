@@ -3,7 +3,9 @@
   "dangerouslyDisablePackageManagerCheck": true,
   "ui": "tui",
   "tasks": {
-    "lint": {},
+    "lint": {
+      "cache": false
+    },
     "lint:fix": {}
   }
 }
