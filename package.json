@@ -19,6 +19,11 @@
     "lint:ci": "turbo lint --ui stream",
     "lint:fix": "turbo lint:fix"
   },
+  "dependencies": {
+    "next": "^15.3.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
   "devDependencies": {
     "prettier": "^3.6",
     "turbo": "^2.5",
