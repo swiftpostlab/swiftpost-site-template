@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@swiftpost/config": "*",
-    "typescript": "*"
+    "typescript": "*",
+    "typescript-eslint": "*"
   }
 }
