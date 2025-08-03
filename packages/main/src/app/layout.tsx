@@ -5,8 +5,8 @@ import ThemeProvider from '@swiftpost/elysium/core/ThemeProvider';
 import { theme, mainFont } from '@swiftpost/elysium/themes/gamut';
 
 export const metadata: Metadata = {
-  title: 'SwiftPost Next Static Template',
-  description: 'Batteries included Next static template',
+  title: 'SwiftPost Template',
+  description: 'Batteries included website template',
 };
 
 interface Props {
