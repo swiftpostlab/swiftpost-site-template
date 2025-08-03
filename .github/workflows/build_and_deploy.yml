@@ -1,5 +1,11 @@
 name: Build and Deploy Personal Website
 on: [push, pull_request]
+
+# Required for dependabot merge
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   build_deploy:
     name: Build and Deploy
@@ -31,3 +37,10 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./packages/main/out
+      
+      - name: Dependabot auto-merge
+        if: github.event.pull_request.user.login == 'dependabot[bot]'
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
