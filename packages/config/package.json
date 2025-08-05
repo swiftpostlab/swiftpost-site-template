@@ -17,7 +17,7 @@
     "eslint-plugin-prettier": "^5",
     "eslint-plugin-react": "^7",
     "globals": "^15",
-    "typescript-eslint": "^8.14.0"
+    "typescript-eslint": "^8.39.0"
   },
   "peerDependencies": {
     "typescript": "*",
