@@ -1,5 +1,8 @@
 name: Build and Deploy Personal Website
-on: [push, pull_request]
+on: 
+  push: 
+    branches: [main]
+  pull_request:
 
 # Required for dependabot merge
 permissions:
