@@ -27,4 +27,5 @@ const ContentFittedStack: React.FC<Props> = ({
   );
 };
 
+export type ContentFittedStackProps = Props;
 export default ContentFittedStack;

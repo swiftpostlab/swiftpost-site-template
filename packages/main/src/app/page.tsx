@@ -1,8 +1,8 @@
 import StackLayout from '@swiftpost/elysium/layouts/StackLayout';
-import Text from '@swiftpost/elysium/ui/base/Text';
 import Stack from '@swiftpost/elysium/ui/base/Stack';
 import ContentFittedStack from '@swiftpost/elysium/ui/ContentFittedStack';
 import Menu from '@/components/Menu';
+import FooterContent from '@/components/FooterContent';
 import Logo from '@/components/Logo';
 import { useStaticTheme } from '@/styles/useStaticTheme';
 
@@ -35,24 +35,7 @@ const Home: React.FC = () => {
           </Stack>
         ),
         footerContent: (
-          <ContentFittedStack
-            minHeight={theme.spacing(6)}
-            alignItems="center"
-            contentMaxWidth={theme.breakpoints.values.lg}
-            margin={theme.spacing(2)}
-            containerProps={{
-              sx: {
-                backgroundColor: 'black',
-              },
-            }}
-          >
-            <Text color="white" gutterBottom>
-              Elysium UI / Gamut Theme / SwiftPost Template.
-            </Text>
-            <Text color="white" gutterBottom>
-              Copyright © SwiftPostLab | Fabio Colella 2025.
-            </Text>
-          </ContentFittedStack>
+          <FooterContent contentMaxWidth={theme.breakpoints.values.lg} />
         ),
       }}
     />
