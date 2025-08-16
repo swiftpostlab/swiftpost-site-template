@@ -45,6 +45,18 @@ The CI of this project already contains the needed setup to deploy it on GitHub 
 
 ## Known issues
 
+### Issues with install
+
+If while installing with `yarn` hangs and you get the following
+
+```sh
+info There appears to be trouble with your network connection. Retrying...
+```
+
+you might need to repeat the command with the flag `--network-timeout 100000`.
+
+See more: <https://stackoverflow.com/a/51508426/2219492>
+
 ### Issues with your first deploy
 
 However, for the first setup, you my need to follow [these additional steps](https://github.com/peaceiris/actions-gh-pages?tab=readme-ov-file#%EF%B8%8F-first-deployment-with-github_token).
