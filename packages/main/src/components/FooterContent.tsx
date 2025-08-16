@@ -15,9 +15,11 @@ const Footer: React.FC<Props> = ({ contentMaxWidth }) => {
       alignItems="center"
       contentMaxWidth={contentMaxWidth}
       margin={theme.spacing(2)}
-      containerProps={{
-        sx: {
-          backgroundColor: 'black',
+      slotProps={{
+        container: {
+          sx: {
+            backgroundColor: 'black',
+          },
         },
       }}
     >

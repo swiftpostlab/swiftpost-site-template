@@ -25,7 +25,7 @@ const Home: React.FC = () => {
               direction="row"
               alignItems="center"
               contentMaxWidth={theme.breakpoints.values.lg}
-              containerProps={{ padding: theme.spacing(2) }}
+              slotProps={{ container: { padding: theme.spacing(2) } }}
             >
               <Stack flex={1}>
                 <Logo />
