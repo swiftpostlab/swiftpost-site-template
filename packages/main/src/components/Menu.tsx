@@ -2,15 +2,15 @@
 
 import Text from '@swiftpost/elysium/ui/base/Text';
 import Stack from '@swiftpost/elysium/ui/base/Stack';
-import { useTheme } from '@swiftpost/elysium/ui/useTheme';
-import useMediaQuery from '@swiftpost/elysium/ui/useMediaQuery';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
+import { useStaticTheme } from '@/styles/useStaticTheme';
+import Box from '@mui/material/Box';
 
 const menuItems = ['Home', 'Blog', 'Portfolio', 'About', 'Contact'];
 
 const MenuBar: React.FC = () => {
-  const theme = useTheme();
+  const theme = useStaticTheme();
   return (
     <Stack direction="row" spacing={theme.spacing(2)}>
       {menuItems.map((item) => (
@@ -25,6 +25,11 @@ const HamburgerMenu: React.FC = () => {
   const paddingSize = 2;
   const MenuButton = () => (
     <MenuIcon
+      sx={{
+        '&:hover': {
+          cursor: 'pointer',
+        },
+      }}
       onClick={() => {
         setIsOpen(!isOpen);
       }}
@@ -64,12 +69,14 @@ const HamburgerMenu: React.FC = () => {
 };
 
 const Menu: React.FC = () => {
-  const matches = useMediaQuery((theme) => theme.breakpoints.up('sm'));
   return (
     <>
-      {matches ?
+      <Box sx={{ display: { sm: 'none', md: 'block' } }}>
         <MenuBar />
-      : <HamburgerMenu />}
+      </Box>
+      <Box sx={{ display: { sm: 'block', md: 'none' } }}>
+        <HamburgerMenu />
+      </Box>
     </>
   );
 };
