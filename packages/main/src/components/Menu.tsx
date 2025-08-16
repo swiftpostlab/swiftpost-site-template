@@ -70,10 +70,24 @@ const HamburgerMenu: React.FC = () => {
 const Menu: React.FC = () => {
   return (
     <>
-      <Box sx={{ display: { sm: 'none', md: 'block' } }}>
+      <Box
+        sx={(theme) => ({
+          display: 'none',
+          [theme.breakpoints.up('md')]: {
+            display: 'block',
+          },
+        })}
+      >
         <MenuBar />
       </Box>
-      <Box sx={{ display: { sm: 'block', md: 'none' } }}>
+      <Box
+        sx={(theme) => ({
+          display: 'none',
+          [theme.breakpoints.down('md')]: {
+            display: 'block',
+          },
+        })}
+      >
         <HamburgerMenu />
       </Box>
     </>
