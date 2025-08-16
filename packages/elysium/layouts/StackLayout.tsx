@@ -1,53 +1,56 @@
-import type { SxProps } from '../ui/types';
+import type { InferSlotsFromSlotProps, SxProps } from '../ui/types';
 import { spreadSx } from '../utils/styles/sxProps';
 import Stack from '../ui/base/Stack';
 import Box from '../ui/base/Box';
 import { memo } from 'react';
 
-interface MainProps {
-  sx: SxProps;
-}
+const componentBaseName = 'stack-layout';
 
-interface FooterProps {
-  sx: SxProps;
+interface SlotProps {
+  mainContainer: {
+    children: React.ReactNode;
+    sx?: SxProps;
+  };
+  footerContainer?: {
+    children: React.ReactNode;
+    sx?: SxProps;
+  };
 }
 
 interface Props {
-  elements: {
-    mainContent: React.ReactNode;
-    footerContent?: React.ReactNode;
-  };
-  slotProps?: {
-    main?: MainProps;
-    footer?: FooterProps;
-  };
+  slots?: Partial<InferSlotsFromSlotProps<SlotProps>>;
+  slotProps: SlotProps;
   sx?: SxProps;
 }
 
 /**
  * A simple stack layout with an optional footer sticked at the bottom.
  */
-const StackLayout: React.FC<Props> = ({ elements, slotProps, sx }) => {
+const StackLayout: React.FC<Props> = ({ slots, slotProps, sx }) => {
+  const MainContainer = slots?.mainContainer ?? Box;
+  const FooterContainer = slots?.footerContainer ?? Box;
+
   return (
     <Stack
-      className="stack-layout"
+      className={componentBaseName}
       sx={[{ height: '100%', width: '100%' }, ...spreadSx(sx)]}
     >
-      <Box
+      <MainContainer
+        className={`${componentBaseName}-container`}
         sx={[
           { height: '100%', width: '100%' },
-          ...spreadSx(slotProps?.main?.sx),
+          ...spreadSx(slotProps.mainContainer.sx),
         ]}
       >
-        {elements.mainContent}
-      </Box>
-      {elements.footerContent != null && (
-        <Box
-          component="footer"
-          sx={[{ width: '100%' }, ...spreadSx(slotProps?.footer?.sx)]}
+        {slotProps.mainContainer.children}
+      </MainContainer>
+      {slotProps.footerContainer != null && (
+        <FooterContainer
+          className={`${componentBaseName}-footer`}
+          sx={[{ width: '100%' }, ...spreadSx(slotProps.footerContainer.sx)]}
         >
-          {elements.footerContent}
-        </Box>
+          {slotProps.footerContainer.children}
+        </FooterContainer>
       )}
     </Stack>
   );

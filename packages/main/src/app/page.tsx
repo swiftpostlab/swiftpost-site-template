@@ -22,15 +22,19 @@ const Home: React.FC = () => {
   const theme = useStaticTheme();
   return (
     <StackLayout
-      elements={{
-        mainContent: (
-          <Stack>
-            <TopBar />
-            <Header contentMaxWidth={theme.breakpoints.values.lg} />
-            <Box component="main" id="main">{`Content`}</Box>
-          </Stack>
-        ),
-        footerContent: <Footer contentMaxWidth={theme.breakpoints.values.lg} />,
+      slotProps={{
+        mainContainer: {
+          children: (
+            <Stack>
+              <TopBar />
+              <Header contentMaxWidth={theme.breakpoints.values.lg} />
+              <Box component="main" id="main">{`Content`}</Box>
+            </Stack>
+          ),
+        },
+        footerContainer: {
+          children: <Footer contentMaxWidth={theme.breakpoints.values.lg} />,
+        },
       }}
     />
   );
