@@ -4,18 +4,7 @@ import Footer from '@/components/Footer';
 import { staticTheme } from '@/styles/staticTheme';
 import Header from '@/components/Header';
 import Box from '@swiftpost/elysium/ui/base/Box';
-
-const TopBar = () => {
-  return (
-    <Stack
-      height={staticTheme.spacing(4)}
-      width="100%"
-      sx={{
-        backgroundColor: 'primary.dark',
-      }}
-    />
-  );
-};
+import TopBar from '@/components/TopBar';
 
 const Home: React.FC = () => {
   return (
