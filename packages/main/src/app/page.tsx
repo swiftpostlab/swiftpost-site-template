@@ -1,15 +1,14 @@
 import StackLayout from '@swiftpost/elysium/layouts/StackLayout';
 import Stack from '@swiftpost/elysium/ui/base/Stack';
 import Footer from '@/components/Footer';
-import { useStaticTheme } from '@/styles/useStaticTheme';
+import { staticTheme } from '@/styles/staticTheme';
 import Header from '@/components/Header';
 import Box from '@swiftpost/elysium/ui/base/Box';
 
 const TopBar = () => {
-  const theme = useStaticTheme();
   return (
     <Stack
-      height={theme.spacing(4)}
+      height={staticTheme.spacing(4)}
       width="100%"
       sx={{
         backgroundColor: 'primary.dark',
@@ -19,7 +18,6 @@ const TopBar = () => {
 };
 
 const Home: React.FC = () => {
-  const theme = useStaticTheme();
   return (
     <StackLayout
       slotProps={{
@@ -27,13 +25,15 @@ const Home: React.FC = () => {
           children: (
             <Stack>
               <TopBar />
-              <Header contentMaxWidth={theme.breakpoints.values.lg} />
+              <Header contentMaxWidth={staticTheme.breakpoints.values.lg} />
               <Box component="main" id="main">{`Content`}</Box>
             </Stack>
           ),
         },
         footerContainer: {
-          children: <Footer contentMaxWidth={theme.breakpoints.values.lg} />,
+          children: (
+            <Footer contentMaxWidth={staticTheme.breakpoints.values.lg} />
+          ),
         },
       }}
     />

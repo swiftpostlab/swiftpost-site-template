@@ -1,22 +1,21 @@
+import { staticTheme } from '@/styles/staticTheme';
 import Text from '@swiftpost/elysium/ui/base/Text';
 import ContentFittedStack from '@swiftpost/elysium/ui/ContentFittedStack';
 import type { ContentFittedStackProps } from '@swiftpost/elysium/ui/ContentFittedStack';
-import { useStaticTheme } from '@/styles/useStaticTheme';
 
 interface Props {
   contentMaxWidth: ContentFittedStackProps['contentMaxWidth'];
 }
 
 const Footer: React.FC<Props> = ({ contentMaxWidth }) => {
-  const theme = useStaticTheme();
   return (
     <ContentFittedStack
       component="footer"
       id="footer"
-      minHeight={theme.spacing(6)}
+      minHeight={staticTheme.spacing(6)}
       alignItems="center"
       contentMaxWidth={contentMaxWidth}
-      margin={theme.spacing(2)}
+      margin={staticTheme.spacing(2)}
       slotProps={{
         container: {
           sx: {

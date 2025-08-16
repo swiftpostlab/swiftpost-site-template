@@ -1,4 +1,4 @@
-import { useStaticTheme } from '@/styles/useStaticTheme';
+import { staticTheme } from '@/styles/staticTheme';
 import Stack from '@swiftpost/elysium/ui/base/Stack';
 import ContentFittedStack, {
   ContentFittedStackProps,
@@ -11,16 +11,15 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ contentMaxWidth }) => {
-  const theme = useStaticTheme();
   return (
     <ContentFittedStack
       component="header"
       id="header"
-      height={theme.spacing(12)}
+      height={staticTheme.spacing(12)}
       direction="row"
       alignItems="center"
       contentMaxWidth={contentMaxWidth}
-      slotProps={{ container: { padding: theme.spacing(2) } }}
+      slotProps={{ container: { padding: staticTheme.spacing(2) } }}
     >
       <Stack flex={1}>
         <Logo />

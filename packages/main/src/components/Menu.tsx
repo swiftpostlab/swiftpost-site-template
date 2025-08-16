@@ -4,15 +4,14 @@ import Text from '@swiftpost/elysium/ui/base/Text';
 import Stack from '@swiftpost/elysium/ui/base/Stack';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
-import { useStaticTheme } from '@/styles/useStaticTheme';
+import { staticTheme } from '@/styles/staticTheme';
 import Box from '@mui/material/Box';
 
 const menuItems = ['Home', 'Blog', 'Portfolio', 'About', 'Contact'];
 
 const MenuBar: React.FC = () => {
-  const theme = useStaticTheme();
   return (
-    <Stack direction="row" spacing={theme.spacing(2)}>
+    <Stack direction="row" spacing={staticTheme.spacing(2)}>
       {menuItems.map((item) => (
         <Text key={item}>{item}</Text>
       ))}
