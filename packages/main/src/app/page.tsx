@@ -1,10 +1,22 @@
 import StackLayout from '@swiftpost/elysium/layouts/StackLayout';
 import Stack from '@swiftpost/elysium/ui/base/Stack';
-import ContentFittedStack from '@swiftpost/elysium/ui/ContentFittedStack';
-import Menu from '@/components/Menu';
-import FooterContent from '@/components/FooterContent';
-import Logo from '@/components/Logo';
+import Footer from '@/components/Footer';
 import { useStaticTheme } from '@/styles/useStaticTheme';
+import Header from '@/components/Header';
+import Box from '@swiftpost/elysium/ui/base/Box';
+
+const TopBar = () => {
+  const theme = useStaticTheme();
+  return (
+    <Stack
+      height={theme.spacing(4)}
+      width="100%"
+      sx={{
+        backgroundColor: 'primary.dark',
+      }}
+    />
+  );
+};
 
 const Home: React.FC = () => {
   const theme = useStaticTheme();
@@ -13,30 +25,12 @@ const Home: React.FC = () => {
       elements={{
         mainContent: (
           <Stack>
-            <Stack
-              height={theme.spacing(4)}
-              width="100%"
-              sx={{
-                backgroundColor: 'primary.dark',
-              }}
-            ></Stack>
-            <ContentFittedStack
-              height={theme.spacing(12)}
-              direction="row"
-              alignItems="center"
-              contentMaxWidth={theme.breakpoints.values.lg}
-              slotProps={{ container: { padding: theme.spacing(2) } }}
-            >
-              <Stack flex={1}>
-                <Logo />
-              </Stack>
-              <Menu />
-            </ContentFittedStack>
+            <TopBar />
+            <Header contentMaxWidth={theme.breakpoints.values.lg} />
+            <Box component="main" id="main">{`Content`}</Box>
           </Stack>
         ),
-        footerContent: (
-          <FooterContent contentMaxWidth={theme.breakpoints.values.lg} />
-        ),
+        footerContent: <Footer contentMaxWidth={theme.breakpoints.values.lg} />,
       }}
     />
   );

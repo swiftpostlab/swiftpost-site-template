@@ -11,6 +11,8 @@ const Footer: React.FC<Props> = ({ contentMaxWidth }) => {
   const theme = useStaticTheme();
   return (
     <ContentFittedStack
+      component="footer"
+      id="footer"
       minHeight={theme.spacing(6)}
       alignItems="center"
       contentMaxWidth={contentMaxWidth}

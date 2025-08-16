@@ -29,9 +29,11 @@ interface Props {
  */
 const StackLayout: React.FC<Props> = ({ elements, slotProps, sx }) => {
   return (
-    <Stack sx={[{ height: '100%', width: '100%' }, ...spreadSx(sx)]}>
+    <Stack
+      className="stack-layout"
+      sx={[{ height: '100%', width: '100%' }, ...spreadSx(sx)]}
+    >
       <Box
-        component="main"
         sx={[
           { height: '100%', width: '100%' },
           ...spreadSx(slotProps?.main?.sx),
