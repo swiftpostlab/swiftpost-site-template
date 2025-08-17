@@ -6,12 +6,13 @@ import Header from '@/components/Header';
 import TopBar from '@/components/TopBar';
 import ContentFittedStack from '@swiftpost/elysium/ui/ContentFittedStack';
 import Text from '@swiftpost/elysium/ui/base/Text';
-import Image, { ImageSourceData } from '@swiftpost/elysium/ui/Image';
+import Image from '@swiftpost/elysium/ui/Image';
+import { PostData } from '@/types';
 
 const contentMaxWidth = staticTheme.breakpoints.values.lg;
 
 // Example blog post data
-const _blogPost = {
+const _blogPost: PostData = {
   title: 'My Awesome Blog Post',
   content: 'This is the content of my blog post...',
   date: '2023-10-27',
@@ -22,15 +23,7 @@ const _blogPost = {
 };
 
 interface Props {
-  post: {
-    title: string;
-    content: string;
-    date: string;
-    image?: string | ImageSourceData;
-    author?: {
-      name: string;
-    };
-  };
+  post: PostData;
   children: React.ReactNode;
 }
 
