@@ -1,5 +1,7 @@
-import ElysiumLink from '@swiftpost/elysium/ui/base/Link';
+import BaseLink from '@swiftpost/elysium/ui/base/Link';
 import NextLink from 'next/link';
+import type { SxProps } from '../ui/types';
+import { spreadSx } from '../utils/styles/sxProps';
 
 interface Props {
   href: string;
@@ -7,6 +9,7 @@ interface Props {
   inheritStyle?: boolean;
   external?: boolean;
   blank?: boolean;
+  sx?: SxProps;
 }
 
 const Link: React.FC<Props> = ({
@@ -15,9 +18,10 @@ const Link: React.FC<Props> = ({
   external,
   inheritStyle,
   blank,
+  sx,
 }) => {
   return (
-    <ElysiumLink
+    <BaseLink
       href={href}
       {...(!external && { component: NextLink })}
       {...(inheritStyle && {
@@ -25,14 +29,17 @@ const Link: React.FC<Props> = ({
         fontWeight: 'inherit',
       })}
       {...(blank && { target: '_blank' })}
-      sx={{
-        '&:hover': {
-          color: 'primary.light',
+      sx={[
+        {
+          '&:hover': {
+            color: 'primary.light',
+          },
         },
-      }}
+        ...spreadSx(sx),
+      ]}
     >
       {children}
-    </ElysiumLink>
+    </BaseLink>
   );
 };
 

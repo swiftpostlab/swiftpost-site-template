@@ -2,7 +2,7 @@ import { staticTheme } from '@/styles/staticTheme';
 import Text from '@swiftpost/elysium/ui/base/Text';
 import ContentFittedStack from '@swiftpost/elysium/ui/ContentFittedStack';
 import type { ContentFittedStackProps } from '@swiftpost/elysium/ui/ContentFittedStack';
-import Link from './Link';
+import Link from '@swiftpost/elysium/ui/Link';
 import { customConfig } from '@/customConfig';
 
 interface Props {
