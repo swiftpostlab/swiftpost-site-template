@@ -6,7 +6,7 @@
   "description": "Batteries included React template",
   "main": "index.js",
   "repository": "git@github.com:swiftpostlab/swiftpost-next-static-template.git",
-  "author": "Fabio Colella <fcole90@gmail.com>",
+  "author": "SwiftPost <swiftpostlab@gmail.com>",
   "license": "MIT",
   "workspaces": [
     "packages/*"

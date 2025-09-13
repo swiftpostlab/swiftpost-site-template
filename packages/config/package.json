@@ -1,7 +1,7 @@
 {
   "name": "@swiftpost/config",
   "version": "0.0.1",
-  "author": "Fabio Colella <fcole90@gmail.com>",
+  "author": "SwiftPost <swiftpostlab@gmail.com>",
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",
