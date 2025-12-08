@@ -28,7 +28,7 @@
     "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "prettier": "^3.6",
+    "prettier": "^3.7",
     "turbo": "^2.6",
     "typescript": "^5.9.3"
   }
