@@ -119,3 +119,80 @@ To learn more about GitHub Pages, take a look at the following resources:
 - [ ] Add carousel component
 - [ ] Add FAP component
 - [ ] Add payment option component with major 3rd party payment providers (e.g. PayPal, Stripe, Klarna)
+
+## Contribute back
+
+If you plan to contribute back to this project, please make a fork and read the following.
+
+### Create a local branch called upstream that mirrors upstream/main
+
+```sh
+git checkout -b upstream upstream/main
+git branch --set-upstream-to=upstream/main upstream
+```
+
+This creates a local upstream branch that mirrors the upstream/main branch.
+​
+
+### Keep your local upstream up-to-date
+
+```sh
+git fetch upstream
+git checkout upstream
+git reset --hard upstream/main
+```
+
+This keeps a local view of the upstream’s main branch; it’s not part of your fork.
+
+### Create a feature branch for your changes
+
+Always base your work on the local upstream branch so your changes start from the latest upstream main:
+
+```sh
+git checkout upstream
+git checkout -b feature/my-change
+This creates a new branch for your contribution based on the current upstream state.
+```
+
+### Cherry-pick the commits you want to contribute
+
+If you already have commits in another branch (for example, in your fork’s main or some experimental branch), cherry-pick only the commits you want onto your feature branch:
+
+```sh
+# Inspect your existing branch to find commit hashes
+git log <your-existing-branch>
+# From feature/my-change, cherry-pick selected commits
+git checkout feature/my-change
+git cherry-pick <commit-hash-1> <commit-hash-2> ...
+```
+
+Resolve any conflicts during cherry-pick, then continue with:
+
+```sh
+git cherry-pick --continue
+```
+
+as needed.
+
+### Push your branch and open a Pull Request
+
+Push the feature branch to your fork:
+
+```sh
+git push -u origin feature/my-change
+```
+
+Then go to GitHub and create a Pull Request:
+
+- Base repository: this project’s repo.
+- Base branch: `main`.
+- Head repository: your fork.
+- Head branch: `feature/my-change`.
+
+Describe your changes and submit the PR.
+
+### Rules for direct pushes
+
+Do **not** push directly to the upstream main branch.
+
+All contributions must come through Pull Requests from forks or branches.
