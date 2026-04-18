@@ -55,7 +55,7 @@ const aiExcludePath = path.join(rootDir, '.aiexclude');
 const vscodeSettingsPath = path.join(rootDir, '.vscode', 'settings.json');
 const shouldImportVscode = process.argv.includes('--import-vscode');
 
-const readJsonFile = <T>(filePath: PathLike, fallback: T): T => {
+const readJsonFile = <T,>(filePath: PathLike, fallback: T): T => {
   if (!fs.existsSync(filePath)) {
     return fallback;
   }
@@ -82,7 +82,7 @@ const writeTextFile = (filePath: string, content: string): void => {
   fs.writeFileSync(filePath, content);
 };
 
-const mergeRecord = <TValue>(
+const mergeRecord = <TValue,>(
   existing: Record<string, TValue> | undefined,
   managed: Record<string, TValue>,
 ): Record<string, TValue> => ({

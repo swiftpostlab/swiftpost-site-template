@@ -133,6 +133,7 @@ Scripts in `scripts/` use `.mts` (TypeScript ES Modules) and run via Node's nati
 - Use `interface` for local type definitions (not `type` — keeps consistency with the rest of the codebase for structured shapes).
 - Return type annotations are optional for internal helpers; explicit for exported/public API functions.
 - Use `node:` protocol for Node built-in imports (`import fs from 'node:fs'`).
+- Do not use `/// <reference types="node" />` in script files. Standalone scripts must live under a tsconfig that provides Node types via `compilerOptions.types`.
 
 ### Example
 

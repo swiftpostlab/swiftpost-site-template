@@ -18,8 +18,8 @@
     "lint": "turbo lint",
     "lint:ci": "turbo lint --ui stream",
     "lint:fix": "turbo lint:fix",
-    "typecheck": "turbo typecheck",
-    "typecheck:ci": "turbo typecheck --ui stream",
+    "typecheck": "yarn tsc --project scripts/tsconfig.json --noEmit && turbo typecheck",
+    "typecheck:ci": "yarn tsc --project scripts/tsconfig.json --noEmit && turbo typecheck --ui stream",
     "sync:ai-ignores": "node --experimental-strip-types scripts/sync-ai-policy.mts",
     "sync:ai-ignores:import-vscode": "node --experimental-strip-types scripts/sync-ai-policy.mts --import-vscode",
     "prepare": "yarn sync:ai-ignores"
