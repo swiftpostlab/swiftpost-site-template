@@ -34,6 +34,12 @@ Document how AI agents are prevented from accessing sensitive files, how noisy/g
 - `protectedFiles`: security-sensitive files that must not be read or modified.
 - `excludedFiles`: low-signal generated output or noise that should usually stay out of agent context, but are not secrets by default.
 
+## Whitelisted Files
+
+- `whitelistedFiles`: files that are intentionally shareable and may be read by AI agents. These are not treated as protected or excluded. Use this for repository-level policy artifacts and sync targets (for example: `.github/copilot-instructions.md`, `.aiexclude`, `.claude/settings.json`, `.vscode/settings.json`, `scripts/sync-ai-ignores.mts`, and `.ai-policy.json`).
+
+When updating policy, add only files here that are safe to expose to AI tools and that are required for agent coordination.
+
 ## How Each Agent Is Restricted
 
 | Agent | File-Level Restriction | Behavioral Instruction |

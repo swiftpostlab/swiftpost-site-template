@@ -23,6 +23,14 @@
     "logs/",
     ".turbo/"
   ],
+  "whitelistedFiles": [
+    ".github/copilot-instructions.md",
+    ".aiexclude",
+    ".claude/settings.json",
+    ".vscode/settings.json",
+    "scripts/sync-ai-ignores.mts",
+    ".ai-policy.json"
+  ],
   "terminalAutoApprove": {
     "/^git (log|status).*$/": true,
     "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai|sync:ai:import)$/": true,
