@@ -21,7 +21,7 @@ You may choose to install Git on your machine, or use GitHub Desktop for a more 
 
 ### Node (for local development)
 
-Node 20 or higher (available on path), using `nvm` is recommended but not required.
+Node 22 or higher (available on path), using `nvm` is recommended but not required.
 
 - [Windows node setup guide](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows)
 

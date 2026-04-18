@@ -122,3 +122,33 @@ export const useCustomFeature = <TValue,>(initialValue: TValue) => {
 - **Curly braces required.** All `if`/`else`/`for`/`while` blocks must use curly braces (enforced by ESLint `curly: ['error', 'all']`).
 - **No useless renames.** Destructuring renames must add meaning (enforced by ESLint `no-useless-rename`).
 - **Unused variables.** Prefix with `_` if intentionally unused (e.g., `_event`, `_index`).
+
+## Standalone Scripts
+
+Scripts in `scripts/` use `.mts` (TypeScript ES Modules) and run via Node's native type stripping (`node --experimental-strip-types`). This requires **Node >= 22.6**.
+
+### Rules
+
+- All project TypeScript rules apply: no `any`, strict types, `const` arrow functions, `import type` for type-only imports.
+- Use `interface` for local type definitions (not `type` — keeps consistency with the rest of the codebase for structured shapes).
+- Return type annotations are optional for internal helpers; explicit for exported/public API functions.
+- Use `node:` protocol for Node built-in imports (`import fs from 'node:fs'`).
+
+### Example
+
+```ts
+import type { PathLike } from 'node:fs';
+import fs from 'node:fs';
+
+interface Config {
+  name: string;
+  values?: string[];
+}
+
+const readConfig = <T>(filePath: PathLike, fallback: T): T => {
+  if (!fs.existsSync(filePath)) {
+    return fallback;
+  }
+  return JSON.parse(fs.readFileSync(filePath, 'utf-8')) as T;
+};
+```

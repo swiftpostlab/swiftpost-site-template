@@ -17,7 +17,12 @@
     "start": "yarn workspace @swiftpost/main start",
     "lint": "turbo lint",
     "lint:ci": "turbo lint --ui stream",
-    "lint:fix": "turbo lint:fix"
+    "lint:fix": "turbo lint:fix",
+    "typecheck": "turbo typecheck",
+    "typecheck:ci": "turbo typecheck --ui stream",
+    "sync:ai": "node --experimental-strip-types scripts/sync-ai-ignores.mts",
+    "sync:ai:import": "node --experimental-strip-types scripts/sync-ai-ignores.mts --import-vscode",
+    "prepare": "yarn sync:ai"
   },
   "dependencies": {
     "next": "^15.5.6",

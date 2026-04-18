@@ -1,9 +1,9 @@
 ---
-name: elysium
+name: styling
 description: "Elysium UI library — full component reference, import strategy, Slots pattern, styling utilities, and theming. Use when: building UI, choosing components, working with sx/styles, or using the Slots pattern."
 ---
 
-# Elysium UI Library
+# Styling (Elysium UI Library)
 
 ## Purpose
 
@@ -259,7 +259,7 @@ import type { SxProps, Theme, SystemStyleObject, InferSlotsFromSlotProps, SxArra
 | `SxProps` | Standard MUI sx prop type |
 | `Theme` | MUI Theme type |
 | `SystemStyleObject` | Single style object within an sx array |
-| `SxArray<TTheme>` | `ReadonlyArray<SystemStyleObject \| ((theme) => SystemStyleObject)>` |
+| `SxArray<TTheme>` | `ReadonlyArray<SystemStyleObject \\| ((theme) => SystemStyleObject)>` |
 | `InferSlotsFromSlotProps<T>` | Derives slot component types from a SlotProps interface |
 
 ---

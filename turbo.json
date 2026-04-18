@@ -6,6 +6,9 @@
     "lint": {
       "cache": false
     },
-    "lint:fix": {}
+    "lint:fix": {},
+    "typecheck": {
+      "cache": false
+    }
   }
 }

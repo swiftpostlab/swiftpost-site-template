@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@swiftpost/elysium": "*",

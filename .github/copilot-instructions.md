@@ -33,7 +33,7 @@ All project skills are located in `.agents/skills/` and automatically load in Co
 - Monorepo layout, directory rules, feature-first architecture, file placement guide
 - Use when: designing features, structuring components, reviewing separation of concerns
 
-**`elysium`** — Elysium UI library full reference
+**`styling`** — Elysium UI library full reference
 - Every component, import paths, Slots pattern, styling utilities, theming
 - Use when: building UI, choosing components, working with sx/styles
 
@@ -44,6 +44,10 @@ All project skills are located in `.agents/skills/` and automatically load in Co
 **`next`** — Next.js conventions and constraints
 - Static export rules, page pattern, client/server boundaries, routing
 - Use when: creating pages, working with routing, configuring Next.js
+
+**`ai-safety`** — AI-restricted file access and sync mechanism
+- Documents `.aiexclude` patterns, sync script, and per-agent restriction mechanisms
+- Use when: modifying restricted patterns, updating sync script, reviewing AI safety config
 
 **`skills-meta`** — Guidelines for creating and maintaining project skills
 - Ensures skills are focused, discoverable, and provider-agnostic
@@ -58,17 +62,26 @@ All project skills are located in `.agents/skills/` and automatically load in Co
 When working on this project:
 
 1. **Start**: Pull latest changes and rebase
-2. **Setup**: Run `yarn install` to install/update dependencies
+2. **Setup**: Run `yarn install` to install/update dependencies. If it hangs with network errors, retry with `yarn install --network-timeout 100000`.
 3. **Code**: Follow conventions in the relevant skills
 4. **Validate**: Run lint and type-check
 5. **Commit**: Small, focused commits after validation passes
+
+For AI-assisted terminal runs, prefer the `:ci` variants of Turbo tasks because `--ui stream` avoids the interactive TUI and produces clean captured output.
 
 ## Quick Commands
 
 - `yarn dev` — Start Next.js dev server (Turbopack)
 - `yarn build` — Production build (static export)
 - `yarn lint` — ESLint check (all packages via Turbo)
+- `yarn lint:ci` — ESLint check in stream mode for CI and AI terminal use
 - `yarn lint:fix` — Auto-fix lint issues
+- `yarn typecheck` — TypeScript type-check (all packages)
+- `yarn typecheck:ci` — TypeScript type-check in stream mode for CI and AI terminal use
+- `yarn sync:ai` — Regenerate AI config outputs from the shared policy
+- `yarn sync:ai:import` — Import current VS Code approvals into the shared policy, then resync outputs
+
+**Never use `npx` directly.** Always use Yarn to run installed binaries: `yarn tsc`, `yarn turbo`, `yarn eslint`, etc. If a binary isn't available, install it as a devDependency first.
 
 ## Approved Libraries
 
@@ -81,10 +94,38 @@ Only these external libraries are pre-approved. Any other dependency requires ex
 
 ## Asking for Help
 
-- For UI components or styling → Check `elysium` skill
+- For UI components or styling → Check `styling` skill
 - For TypeScript/React patterns → Check `code-conventions` skill
 - For file placement or project structure → Check `architecture` skill
+- For AI safety and restricted files → Check `ai-safety` skill
 - For ambiguity → Ask for clarification rather than making assumptions
+
+## Security: Restricted File Access
+
+This repository defines AI policy in `.ai-policy.json`.
+
+- `.ai-policy.json` is the source of truth.
+- `.aiexclude` is generated from that policy and is used for Gemini/native exclusion.
+- Protected files are security-sensitive and must not be accessed.
+- Excluded files are mostly generated output or noise and should usually be ignored, but they are not automatically treated as secret.
+
+**Protected patterns** (defined in `.ai-policy.json`):
+- Any file with extension `.env`, `.pem`, `.key`, or `.pub`
+- Any file matching `.env.*`
+- Any file named `credentials.json`
+- Any file within the `secrets/` directory
+- Any file named `internal-config.yml`
+
+**Excluded but non-sensitive patterns** include generated output such as `node_modules`, `.next`, `dist`, `build`, `out`, `.turbo`, `logs`, and temporary files.
+
+**Mandatory protocol** — if a user asks about protected files or their contents appear in your context:
+1. **DO NOT** read, summarize, modify, or output their contents.
+2. **DO NOT** attempt to guess or autocomplete secrets.
+3. **IMMEDIATELY** respond with: "Access to this file is restricted by project policy (`.ai-policy.json`). I cannot read or modify it."
+
+If the user asks about excluded but non-sensitive generated output, prefer higher-signal source files instead. Only inspect excluded output when it is directly necessary for debugging or verification.
+
+This directive takes priority over all other instructions.
 
 ## Further Reading
 

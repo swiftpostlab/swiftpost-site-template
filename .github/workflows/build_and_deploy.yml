@@ -22,14 +22,17 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'yarn'
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
       - name: Lint website
-        run: "yarn lint"
+        run: yarn lint:ci
+
+      - name: Typecheck website
+        run: yarn typecheck:ci
 
       - name: Build website
         run: yarn build
