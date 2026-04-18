@@ -76,6 +76,6 @@ The script reads `.ai-policy.json` and writes:
 
 The command/edit policy is kept at the top level of `.ai-policy.json` even though it currently syncs only into `.vscode/settings.json`. That keeps the source model agent-agnostic and makes it easier to map the same intent into Gemini or Claude-specific settings if those tools expose compatible controls later.
 
-When syncing `.claude/settings.json` and `.vscode/settings.json`, the script merges policy-managed entries into the existing files instead of replacing the full permission maps. This preserves command approvals that VS Code may add interactively when the user greenlights a command.
+When syncing `.claude/settings.json` and `.vscode/settings.json`, the script replaces the policy-managed data deterministically instead of appending to it. That means removing an item from `.ai-policy.json` removes the generated output on the next sync as well. Unrelated settings are preserved where the script can distinguish them, but policy-owned sections are rewritten from source.
 
-`yarn sync:ai-ignores:import-vscode` is the explicit reverse flow. It imports the current `.vscode/settings.json` terminal/edit approval maps into `.ai-policy.json`, then runs the normal forward sync so the shared policy catches up to the locally approved commands.
+`yarn sync:ai-ignores:import-vscode` is the explicit reverse flow. It copies the current `.vscode/settings.json` terminal/edit approval maps into `.ai-policy.json`, then runs the normal forward sync so the shared policy becomes the new source of truth.

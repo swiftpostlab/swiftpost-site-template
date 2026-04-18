@@ -28,6 +28,7 @@
     "/^git (log|status).*$/": true,
     "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai-ignores|sync:ai-ignores:import-vscode)$/": true,
     "/^yarn (install | install --network-timeout 100000)$/": true,
+    "yarn tsc --project scripts/tsconfig.json --noEmit": true,
     "rm": false,
     "rmdir": false,
     "del": false,

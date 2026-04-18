@@ -82,23 +82,27 @@ const writeTextFile = (filePath: string, content: string): void => {
   fs.writeFileSync(filePath, content);
 };
 
-const mergeRecord = <TValue,>(
-  existing: Record<string, TValue> | undefined,
-  managed: Record<string, TValue>,
-): Record<string, TValue> => ({
-  ...(existing ?? {}),
-  ...managed,
-});
+const buildProtectedReadRules = (protectedFiles: string[]): string[] =>
+  protectedFiles.map((pattern) => `Read(${pattern})`);
 
-const mergeUniqueStrings = (existing: string[] | undefined, managed: string[]): string[] => {
-  const values = new Set<string>(existing ?? []);
+const replaceManagedClaudeDenyRules = (existing: string[] | undefined, protectedFiles: string[]): string[] => {
+  const preservedRules = (existing ?? []).filter((rule) => !rule.startsWith('Read('));
 
-  for (const value of managed) {
-    values.add(value);
-  }
-
-  return [...values];
+  return [...preservedRules, ...buildProtectedReadRules(protectedFiles)];
 };
+
+const buildProtectedFileAssociations = (protectedFiles: string[]): Record<string, string> =>
+  Object.fromEntries(protectedFiles.map((pattern) => [pattern, 'copilot-restricted-file']));
+
+const replaceManagedFileAssociations = (
+  existing: Record<string, string> | undefined,
+  protectedFiles: string[],
+): Record<string, string> => ({
+  ...Object.fromEntries(
+    Object.entries(existing ?? {}).filter(([, languageId]) => languageId !== 'copilot-restricted-file'),
+  ),
+  ...buildProtectedFileAssociations(protectedFiles),
+});
 
 const buildAiExcludeContent = (policy: AiPolicy): string => {
   const lines = [
@@ -124,8 +128,8 @@ const importPolicyFromVscode = (policy: AiPolicy): AiPolicy => {
 
   return {
     ...policy,
-    terminalAutoApprove: mergeRecord(policy.terminalAutoApprove, vscodeSettings['chat.tools.terminal.autoApprove'] ?? {}),
-    editAutoApprove: mergeRecord(policy.editAutoApprove, vscodeSettings['chat.tools.edits.autoApprove'] ?? {}),
+    terminalAutoApprove: vscodeSettings['chat.tools.terminal.autoApprove'] ?? {},
+    editAutoApprove: vscodeSettings['chat.tools.edits.autoApprove'] ?? {},
   };
 };
 
@@ -163,34 +167,25 @@ const claudeSettingsPath = path.join(rootDir, '.claude', 'settings.json');
 const claudeSettings = readJsonFile<ClaudeSettings>(claudeSettingsPath, {});
 
 claudeSettings.permissions = claudeSettings.permissions ?? {};
-claudeSettings.permissions.deny = mergeUniqueStrings(
+claudeSettings.permissions.deny = replaceManagedClaudeDenyRules(
   claudeSettings.permissions.deny,
-  effectivePolicy.protectedFiles.map((pattern) => `Read(${pattern})`),
+  effectivePolicy.protectedFiles,
 );
 
 writeJsonFile(claudeSettingsPath, claudeSettings);
 console.log('Synced: Claude Code (.claude/settings.json)');
 
 const vscodeSettings = readJsonFile<VscodeSettings>(vscodeSettingsPath, {});
-const associations = vscodeSettings['files.associations'] ?? {};
-const copilotEnable = vscodeSettings['github.copilot.enable'] ?? {};
-
-for (const pattern of effectivePolicy.protectedFiles) {
-  associations[pattern] = 'copilot-restricted-file';
-}
-
-copilotEnable['copilot-restricted-file'] = false;
-
-vscodeSettings['chat.tools.terminal.autoApprove'] = mergeRecord(
-  vscodeSettings['chat.tools.terminal.autoApprove'],
-  effectivePolicy.terminalAutoApprove,
+vscodeSettings['chat.tools.terminal.autoApprove'] = { ...effectivePolicy.terminalAutoApprove };
+vscodeSettings['chat.tools.edits.autoApprove'] = { ...effectivePolicy.editAutoApprove };
+vscodeSettings['files.associations'] = replaceManagedFileAssociations(
+  vscodeSettings['files.associations'],
+  effectivePolicy.protectedFiles,
 );
-vscodeSettings['chat.tools.edits.autoApprove'] = mergeRecord(
-  vscodeSettings['chat.tools.edits.autoApprove'],
-  effectivePolicy.editAutoApprove,
-);
-vscodeSettings['files.associations'] = associations;
-vscodeSettings['github.copilot.enable'] = mergeRecord(vscodeSettings['github.copilot.enable'], copilotEnable);
+vscodeSettings['github.copilot.enable'] = {
+  ...(vscodeSettings['github.copilot.enable'] ?? {}),
+  'copilot-restricted-file': false,
+};
 
 writeJsonFile(vscodeSettingsPath, vscodeSettings);
 console.log('Synced: Copilot local policy (.vscode/settings.json)');
