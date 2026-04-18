@@ -7,7 +7,7 @@ description: "Next.js conventions and constraints for this project. Use when: cr
 
 ## Purpose
 
-Define the Next.js-specific rules and constraints for this static-export project.
+Define the Next.js-specific rules and constraints for this static-export project, with an emphasis on simple boundaries and maintainable patterns that fit a static site.
 
 ## When to use this skill
 

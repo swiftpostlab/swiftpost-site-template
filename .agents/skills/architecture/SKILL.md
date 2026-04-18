@@ -7,7 +7,7 @@ description: "Repo-wide architectural decisions: modularity, feature isolation, 
 
 ## Purpose
 
-Define the high-level architectural rules for the repo: how code is organized, how components are composed, how client/server boundaries work, how features stay isolated, and where files go.
+Define the high-level architectural rules for the repo: how code is organized, how components are composed, how client/server boundaries work, how features stay isolated, and where files go. Favor structures that keep the codebase simple to navigate and maintain over abstractions that add indirection without clear payoff.
 
 For the Elysium UI library reference (components, props, imports, styling), see the **styling** skill.
 For TypeScript/React coding patterns, see the **code-conventions** skill.

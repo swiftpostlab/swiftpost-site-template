@@ -7,7 +7,7 @@ description: "AI policy, protected file access, and exclusion sync. Use when: mo
 
 ## Purpose
 
-Document how AI agents are prevented from accessing sensitive files, how noisy/generated files are excluded from context, and how the policy is synced across agent-specific configurations.
+Document how AI agents are prevented from accessing sensitive files, how noisy/generated files are excluded from context, and how the policy is synced across agent-specific configurations in a way that stays simple, explicit, and maintainable.
 
 ## When to use this skill
 

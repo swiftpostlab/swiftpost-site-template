@@ -49,7 +49,7 @@ All project skills are located in `.agents/skills/` and automatically load in Co
 - Documents `.aiexclude` patterns, sync script, and per-agent restriction mechanisms
 - Use when: modifying restricted patterns, updating sync script, reviewing AI safety config
 
-**`skills-meta`** — Guidelines for creating and maintaining project skills
+**`skills-authoring`** — Guidelines for creating and maintaining project skills
 - Ensures skills are focused, discoverable, and provider-agnostic
 - Use when: designing new skills or evaluating skill quality
 
@@ -70,6 +70,7 @@ When working on this project:
 3. **Code**: Follow conventions in the relevant skills
 4. **Validate**: Run lint and type-check
 5. **Commit**: Small, focused commits after validation passes
+6. **Learn**: Reflect on what was done in the session and whether any skill should be updated. Summarize the learning to the user and ask if they want to update skills. If yes, update the relevant skill using `skills-authoring`, and after editing suggest a follow-up consolidation pass with `tool-consolidate-skills`.
 
 For AI-assisted terminal runs, prefer the `:ci` variants of Turbo tasks because `--ui stream` avoids the interactive TUI and produces clean captured output.
 

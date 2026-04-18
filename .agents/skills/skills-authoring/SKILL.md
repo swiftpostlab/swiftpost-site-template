@@ -1,9 +1,9 @@
 ---
-name: skills-meta
-description: "Guidelines for creating and maintaining project skills. Use when: designing new skills, updating existing skills, establishing skill standards, or evaluating skill quality."
+name: skills-authoring
+description: "Guidelines for creating and maintaining project skills. Use when: designing new skills, updating existing skills, establishing skill standards, evaluating skill quality, organizing skill subfiles, or adapting copied skill content to the repo's actual stack."
 ---
 
-# Skills Meta
+# Skills Authoring
 
 ## Purpose
 
@@ -41,6 +41,8 @@ Use <https://agentskills.io/home> and <https://github.com/anthropics/skills> as 
 - **"When to use" section:** Include a clear section so the AI can determine relevance.
 - **Concrete examples:** Provide code snippets or file structures to minimize ambiguity.
 - **Provider-agnostic:** No provider-specific features or assumptions. Skills must work with Copilot, Claude, Gemini, and others.
+- **Adapt to the real repo:** When a skill is copied or derived from another project, update its commands, libraries, file names, folder layout, and examples to match this repository before keeping it.
+- **Do not preserve stale stack details:** Remove or replace inherited references to the wrong package manager, framework, language conventions, file extensions, or UI library when they do not match the current repo.
 - **Make values explicit:** When a skill depends on values like simplicity, clarity, or maintainability, state them directly in the purpose or rules instead of leaving them implicit.
 - **Prefer modern defaults:** When a skill gives coding guidance, prefer modern, intention-revealing language and platform APIs over older sentinel-style patterns when both are supported by the project's runtime targets.
 
@@ -89,7 +91,7 @@ One-sentence description of what this skill enforces.
 
 ## Examples
 
-\`\`\`tsx
-// Concrete code example
+\`\`\`md
+<!-- Concrete example -->
 \`\`\`
 ```

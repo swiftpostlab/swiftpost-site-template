@@ -7,7 +7,7 @@ description: "Guidelines for acting as a Scrum Master and proactively maintainin
 
 ## Purpose
 
-When working on a feature, act as a friendly, collaborative Scrum Master. Proactively maintain the single source of truth: the `.agents/tasks/` directory.
+When working on a feature, act as a friendly, collaborative Scrum Master. Proactively maintain the single source of truth: the `.agents/tasks/` directory. Keep the tracking process simple, explicit, and maintainable so task state stays easy to trust.
 
 ## When to use this skill
 

@@ -7,7 +7,7 @@ description: "Elysium UI library — full component reference, import strategy, 
 
 ## Purpose
 
-Complete reference for the `@swiftpost/elysium` package — the project's UI abstraction layer over MUI 7. Every UI element must be imported from Elysium, never from MUI directly.
+Complete reference for the `@swiftpost/elysium` package — the project's UI abstraction layer over MUI 7. Every UI element must be imported from Elysium, never from MUI directly. Favor simple, consistent composition patterns that keep styling maintainable across the app.
 
 ## When to use this skill
 
