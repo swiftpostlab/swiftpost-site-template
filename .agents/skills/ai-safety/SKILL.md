@@ -20,7 +20,7 @@ Document how AI agents are prevented from accessing sensitive files, how noisy/g
 ```
 .ai-policy.json                     ← Source of truth
     │
-    ├── scripts/sync-ai-ignores.mts  ← Sync script (runs on `yarn install`)
+    ├── scripts/sync-ai-policy.mts  ← Sync script (runs on `yarn install`)
     │       │
     │       ├── .aiexclude                 → generated for Gemini/native exclusion
     │       ├── .claude/settings.json      → permissions.deny with protected Read() patterns
@@ -36,7 +36,7 @@ Document how AI agents are prevented from accessing sensitive files, how noisy/g
 
 ## Whitelisted Files
 
-- `whitelistedFiles`: files that are intentionally shareable and may be read by AI agents. These are not treated as protected or excluded. Use this for repository-level policy artifacts and sync targets (for example: `.github/copilot-instructions.md`, `.aiexclude`, `.claude/settings.json`, `.vscode/settings.json`, `scripts/sync-ai-ignores.mts`, and `.ai-policy.json`).
+- `whitelistedFiles`: files that are intentionally shareable and may be read by AI agents. These are not treated as protected or excluded. Use this for repository-level policy artifacts and sync targets (for example: `.github/copilot-instructions.md`, `.aiexclude`, `.claude/settings.json`, `.vscode/settings.json`, `scripts/sync-ai-policy.mts`, and `.ai-policy.json`).
 
 When updating policy, add only files here that are safe to expose to AI tools and that are required for agent coordination.
 
@@ -58,15 +58,15 @@ The `.vscode/settings.json` approach maps protected patterns to a `copilot-restr
 2. Put sensitive patterns in `protectedFiles`.
 3. Put noisy/generated output in `excludedFiles`.
 4. Update top-level `terminalAutoApprove` and `editAutoApprove` rules when needed.
-5. Run `yarn sync:ai` to propagate changes.
+5. Run `yarn sync:ai-ignores` to propagate changes.
 6. Commit all generated files (`.aiexclude`, `.claude/settings.json`, `.vscode/settings.json`).
 
-If you want to promote approvals that VS Code added interactively after the user greenlit a command, run `yarn sync:ai:import`. That imports the current VS Code terminal/edit approvals into `.ai-policy.json` first, then performs the normal sync.
+If you want to promote approvals that VS Code added interactively after the user greenlit a command, run `yarn sync:ai-ignores:import-vscode`. That imports the current VS Code terminal/edit approvals into `.ai-policy.json` first, then performs the normal sync.
 
 ## Sync Script
 
-**Location:** `scripts/sync-ai-ignores.mts`
-**Run:** `yarn sync:ai` or `yarn sync:ai:import` (also runs automatically on `yarn install` via `prepare` hook)
+**Location:** `scripts/sync-ai-policy.mts`
+**Run:** `yarn sync:ai-ignores` or `yarn sync:ai-ignores:import-vscode` (also runs automatically on `yarn install` via `prepare` hook)
 **Requires:** Node >= 22.6 (native type stripping)
 
 The script reads `.ai-policy.json` and writes:
@@ -78,4 +78,4 @@ The command/edit policy is kept at the top level of `.ai-policy.json` even thoug
 
 When syncing `.claude/settings.json` and `.vscode/settings.json`, the script merges policy-managed entries into the existing files instead of replacing the full permission maps. This preserves command approvals that VS Code may add interactively when the user greenlights a command.
 
-`yarn sync:ai:import` is the explicit reverse flow. It imports the current `.vscode/settings.json` terminal/edit approval maps into `.ai-policy.json`, then runs the normal forward sync so the shared policy catches up to the locally approved commands.
+`yarn sync:ai-ignores:import-vscode` is the explicit reverse flow. It imports the current `.vscode/settings.json` terminal/edit approval maps into `.ai-policy.json`, then runs the normal forward sync so the shared policy catches up to the locally approved commands.

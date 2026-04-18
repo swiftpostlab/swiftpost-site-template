@@ -28,14 +28,14 @@
     ".aiexclude",
     ".claude/settings.json",
     ".vscode/settings.json",
-    "scripts/sync-ai-ignores.mts",
+    "scripts/sync-ai-policy.mts",
     ".ai-policy.json"
   ],
   "terminalAutoApprove": {
     "/^git (log|status).*$/": true,
-    "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai|sync:ai:import)$/": true,
+    "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai-ignores|sync:ai-ignores:import-vscode)$/": true,
     "/^yarn turbo (lint|typecheck) --ui stream$/": true,
-    "/^node --experimental-strip-types scripts/sync-ai-ignores\\.mts$/": {
+    "/^node --experimental-strip-types scripts/sync-ai-policy\\.mts$/": {
       "approve": true,
       "matchCommandLine": true
     },
@@ -46,7 +46,7 @@
     "del": false,
     "curl": false,
     "wget": false,
-    "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai)$/": true
+    "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai-ignores)$/": true
   },
   "editAutoApprove": {
     "**/*.{ts,tsx,js,mjs,mts,json,yml,yaml,css,md}": true,

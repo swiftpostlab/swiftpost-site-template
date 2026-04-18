@@ -18,9 +18,9 @@
   ],
   "chat.tools.terminal.autoApprove": {
     "/^git (log|status).*$/": true,
-    "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai)$/": true,
+    "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai-ignores)$/": true,
     "/^yarn turbo (lint|typecheck) --ui stream$/": true,
-    "/^node --experimental-strip-types scripts/sync-ai-ignores\\.mts$/": {
+    "/^node --experimental-strip-types scripts/sync-ai-policy\\.mts$/": {
       "approve": true,
       "matchCommandLine": true
     },
@@ -31,7 +31,7 @@
     "del": false,
     "curl": false,
     "wget": false,
-    "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai|sync:ai:import)$/": true
+    "/^yarn (lint|lint:ci|typecheck|typecheck:ci|sync:ai-ignores|sync:ai-ignores:import-vscode)$/": true
   },
   "files.associations": {
     "*.env": "copilot-restricted-file",

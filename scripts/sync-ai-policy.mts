@@ -1,5 +1,5 @@
 /**
- * sync-ai-ignores.mts
+ * sync-ai-policy.mts
  *
  * Reads `.ai-policy.json` (the single source of truth for AI file and command policy)
  * and syncs the relevant parts to agent-specific configuration files:
@@ -8,7 +8,7 @@
  * - Claude Code: `.claude/settings.json` → `permissions.deny` with protected file patterns
  * - GitHub Copilot: `.vscode/settings.json` → protected file associations + command/edit policy
  *
- * Run: `node --experimental-strip-types scripts/sync-ai-ignores.mts`
+ * Run: `node --experimental-strip-types scripts/sync-ai-policy.mts`
  * Requires: Node >= 22.6
  */
 

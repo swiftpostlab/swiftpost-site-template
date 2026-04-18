@@ -20,9 +20,9 @@
     "lint:fix": "turbo lint:fix",
     "typecheck": "turbo typecheck",
     "typecheck:ci": "turbo typecheck --ui stream",
-    "sync:ai": "node --experimental-strip-types scripts/sync-ai-ignores.mts",
-    "sync:ai:import": "node --experimental-strip-types scripts/sync-ai-ignores.mts --import-vscode",
-    "prepare": "yarn sync:ai"
+    "sync:ai-ignores": "node --experimental-strip-types scripts/sync-ai-policy.mts",
+    "sync:ai-ignores:import-vscode": "node --experimental-strip-types scripts/sync-ai-policy.mts --import-vscode",
+    "prepare": "yarn sync:ai-ignores"
   },
   "dependencies": {
     "next": "^15.5.6",
