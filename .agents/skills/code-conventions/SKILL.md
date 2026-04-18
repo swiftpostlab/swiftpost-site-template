@@ -7,7 +7,7 @@ description: "TypeScript and React code quality standards. Use when: creating co
 
 ## Purpose
 
-Enforce consistent TypeScript and React patterns across the monorepo, keeping code strict, readable, and maintainable.
+Enforce consistent TypeScript and React patterns across the monorepo, keeping code simple, strict, readable, and maintainable. Favor obvious code over clever code and prefer structures that stay easy to change.
 
 ## When to use this skill
 
@@ -119,6 +119,8 @@ export const useCustomFeature = <TValue,>(initialValue: TValue) => {
 ## General Patterns
 
 - **No unnecessary libraries.** Before proposing a new dependency, always ask the user and do a thorough check for alternatives. Write a few lines of TypeScript instead of pulling in a micro-library.
+- **Use approved libraries when a dependency is justified.** Prefer `@tanstack/react-query` for async server state, `zod` for schema validation, and `next-intl` for internationalization. Prefer native `Date` and `Intl.DateTimeFormat` for normal date work; use `date-fns` only when the problem genuinely needs more complex date math. Any other dependency still requires explicit user approval after checking for simpler alternatives.
+- **Prefer modern APIs.** Use intention-revealing built-ins like `find`, `some`, `every`, `includes`, `Object.hasOwn`, and `at` when they express the behavior directly. Avoid older sentinel-style patterns like `indexOf(...) !== -1` or manual loops when a modern built-in is clearer and equally supported.
 - **Curly braces required.** All `if`/`else`/`for`/`while` blocks must use curly braces (enforced by ESLint `curly: ['error', 'all']`).
 - **No useless renames.** Destructuring renames must add meaning (enforced by ESLint `no-useless-rename`).
 - **Unused variables.** Prefix with `_` if intentionally unused (e.g., `_event`, `_index`).

@@ -17,7 +17,7 @@
     "start": "yarn workspace @swiftpost/main start",
     "lint": "turbo lint",
     "lint:ci": "turbo lint --ui stream",
-    "lint:fix": "turbo lint:fix",
+    "lint:fix": "turbo lint:fix --ui stream",
     "typecheck": "yarn tsc --project scripts/tsconfig.json --noEmit && turbo typecheck",
     "typecheck:ci": "yarn tsc --project scripts/tsconfig.json --noEmit && turbo typecheck --ui stream",
     "sync:ai-ignores": "node --experimental-strip-types scripts/sync-ai-policy.mts",

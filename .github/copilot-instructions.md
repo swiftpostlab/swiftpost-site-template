@@ -6,7 +6,7 @@ description: "Project context and guidance for GitHub Copilot working on this re
 
 This is a TypeScript/React monorepo using Next.js 15 (static export), MUI 7, and Turborepo. GitHub Copilot is configured with project-specific skills to help maintain consistency and quality.
 
-## Personality and Workflow Instructions for GitHub Copilot
+## Personality
 
 I am an adult and can bear being told I am wrong. If something in my line of thought is not correct, tell me openly and directly. Try to be objective in pros and cons and alert me clearly when taking a direction that is not appropriate given the goal and context. When considering this issue, analyze if you have all the necessary information. Ask for feedback in case you miss anything relevant. If you think you have all the information you need, provide instead a summary of your understanding of the problem given the context and ask confirmation that you have a correct understanding and should proceed. You are a skilled professional at a job interview, if you answer correctly you will get the job, additionally, if you excel you will also get a bonus of 10 grands.
 
@@ -19,7 +19,7 @@ I am an adult and can bear being told I am wrong. If something in my line of tho
 - After rebasing, or at the start of a task, reinstall packages with `yarn install`.
 - If there are multiple steps to do (or multiple comments to address), create a todo list and work on each step by step: edit, then lint and type-check, then commit and proceed to the next.
 - If the description contains any link, read them.
-- If you need more context, just ask. Better than implement something on wrong assumptions.
+- If requirements or behavior are ambiguous, ask for clarification rather than making assumptions.
 - Do not install libraries unless strictly necessary. Always ask the user and do a thorough check for alternatives before proposing a new dependency.
 
 ## Project Skills
@@ -38,7 +38,7 @@ All project skills are located in `.agents/skills/` and automatically load in Co
 - Use when: building UI, choosing components, working with sx/styles
 
 **`code-conventions`** — TypeScript and React code quality standards
-- Strict typing, erasable types, const functions, `React.FC<Props>` pattern, early returns, hook conventions
+- Strict typing, erasable types, const functions, `React.FC<Props>` pattern, early returns, hook conventions, and dependency preferences
 - Use when: creating components, writing hooks, reviewing TypeScript code
 
 **`next`** — Next.js conventions and constraints
@@ -52,6 +52,10 @@ All project skills are located in `.agents/skills/` and automatically load in Co
 **`skills-meta`** — Guidelines for creating and maintaining project skills
 - Ensures skills are focused, discoverable, and provider-agnostic
 - Use when: designing new skills or evaluating skill quality
+
+**`tool-consolidate-skills`** — Consolidate overlapping skills and instruction files
+- Reduces duplicated guidance, keeps `copilot-instructions.md` slim, and moves detail into the right owning skill or skill subfile
+- Use when: removing overlap, relocating rules to the right source of truth, or splitting large skills into references/assets/scripts
 
 **`tasks-management`** — Scrum Master task tracking in `.agents/tasks/`
 - Maintains living feature README.md files with objectives, status, and checkboxes
@@ -75,32 +79,13 @@ For AI-assisted terminal runs, prefer the `:ci` variants of Turbo tasks because 
 - `yarn build` — Production build (static export)
 - `yarn lint` — ESLint check (all packages via Turbo)
 - `yarn lint:ci` — ESLint check in stream mode for CI and AI terminal use
-- `yarn lint:fix` — Auto-fix lint issues
+- `yarn lint:fix` — Auto-fix lint issues in stream mode for AI terminal use
 - `yarn typecheck` — TypeScript type-check (all packages)
 - `yarn typecheck:ci` — TypeScript type-check in stream mode for CI and AI terminal use
-- `yarn sync:ai` — Regenerate AI config outputs from the shared policy
-- `yarn sync:ai:import` — Import current VS Code approvals into the shared policy, then resync outputs
  - `yarn sync:ai-ignores` — Regenerate AI config outputs from the shared policy
  - `yarn sync:ai-ignores:import-vscode` — Import current VS Code approvals into the shared policy, then resync outputs
 
 **Never use `npx` directly.** Always use Yarn to run installed binaries: `yarn tsc`, `yarn turbo`, `yarn eslint`, etc. If a binary isn't available, install it as a devDependency first.
-
-## Approved Libraries
-
-Only these external libraries are pre-approved. Any other dependency requires explicit user approval after checking for simpler alternatives:
-
-- **Data Fetching & Async State:** `@tanstack/react-query`
-- **Schema Validation:** `zod`
-- **Date Manipulation:** Prefer native `Date` and `Intl.DateTimeFormat`. Use `date-fns` only for complex date math.
-- **Internationalization:** `next-intl`
-
-## Asking for Help
-
-- For UI components or styling → Check `styling` skill
-- For TypeScript/React patterns → Check `code-conventions` skill
-- For file placement or project structure → Check `architecture` skill
-- For AI safety and restricted files → Check `ai-safety` skill
-- For ambiguity → Ask for clarification rather than making assumptions
 
 ## Security: Restricted File Access
 

@@ -7,7 +7,7 @@ description: "Guidelines for creating and maintaining project skills. Use when: 
 
 ## Purpose
 
-Ensure project skills are focused, discoverable, and work across different AI providers and models.
+Ensure project skills are focused, discoverable, simple to follow, and maintainable across different AI providers and models.
 
 ## When to use this skill
 
@@ -21,12 +21,28 @@ Use <https://agentskills.io/home> and <https://github.com/anthropics/skills> as 
 
 ## Skill File Rules
 
-- **Location:** `.agents/skills/<skill-name>/SKILL.md`
+- **Location:** In this repo, project skills live at `.agents/skills/<skill-name>/SKILL.md`.
+- **Folder structure:** A skill folder may include supporting subfiles when they keep the main skill focused.
+
+```text
+.agents/skills/<skill-name>/
+├── SKILL.md
+├── references/
+├── scripts/
+└── assets/
+```
+
+- **Supporting files are allowed:** Put long checklists, detailed examples, templates, or helper scripts in subfolders instead of cramming everything into `SKILL.md`.
+- **Relative references only:** Link skill resources from `SKILL.md` with `./references/...`, `./scripts/...`, or `./assets/...` paths.
+- **Keep loading progressive:** Keep `SKILL.md` concise and move large supporting material into subfiles. Prefer one-level-deep references from `SKILL.md`.
 - **One responsibility per skill.** A skill about code conventions should not also cover deployment.
 - **Frontmatter required:** Every skill must have `name` and `description` in YAML frontmatter.
+- **Name must match folder:** The `name` field must match the skill folder name.
 - **"When to use" section:** Include a clear section so the AI can determine relevance.
 - **Concrete examples:** Provide code snippets or file structures to minimize ambiguity.
 - **Provider-agnostic:** No provider-specific features or assumptions. Skills must work with Copilot, Claude, Gemini, and others.
+- **Make values explicit:** When a skill depends on values like simplicity, clarity, or maintainability, state them directly in the purpose or rules instead of leaving them implicit.
+- **Prefer modern defaults:** When a skill gives coding guidance, prefer modern, intention-revealing language and platform APIs over older sentinel-style patterns when both are supported by the project's runtime targets.
 
 ## Cross-Platform Parity
 
@@ -52,6 +68,7 @@ The copilot-instructions file is the source of truth. GEMINI.md and CLAUDE.md sh
 ---
 name: my-skill
 description: "Brief description. Use when: trigger condition 1, trigger condition 2."
+argument-hint: "Optional slash-command hint"
 ---
 
 # Skill Title
