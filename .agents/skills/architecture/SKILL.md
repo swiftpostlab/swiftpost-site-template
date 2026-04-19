@@ -9,7 +9,7 @@ description: "Repo-wide architectural decisions: modularity, feature isolation, 
 
 Define the high-level architectural rules for the repo: how code is organized, how components are composed, how client/server boundaries work, how features stay isolated, and where files go. Favor structures that keep the codebase simple to navigate and maintain over abstractions that add indirection without clear payoff.
 
-For the Elysium UI library reference (components, props, imports, styling), see the **styling** skill.
+For the SwiftPost Elysium UI library reference (components, props, imports, styling helpers), see the **swiftpost-elysium** skill.
 For TypeScript/React coding patterns, see the **code-conventions** skill.
 For Next.js-specific constraints and page patterns, see the **next** skill.
 
@@ -117,7 +117,7 @@ features/<feature-name>/
 
 ## Reusable Component Architecture
 
-Reusable components that are meant to be flexible and overridable must use the **MUI 7 Slots & SlotProps** pattern. See the **styling** skill for the full pattern reference and examples.
+Reusable components that are meant to be flexible and overridable must use the Slots & SlotProps pattern. See the **styling** skill for the general pattern and **swiftpost-elysium** for the concrete package implementation used here.
 
 Key rules:
 * Define `SlotProps` for internal elements, `Props` with `slots?`, `slotProps`, and `sx?`.

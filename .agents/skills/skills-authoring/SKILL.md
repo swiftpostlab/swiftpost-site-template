@@ -43,6 +43,7 @@ Use <https://agentskills.io/home> and <https://github.com/anthropics/skills> as 
 - **Provider-agnostic:** No provider-specific features or assumptions. Skills must work with Copilot, Claude, Gemini, and others.
 - **Adapt to the real repo:** When a skill is copied or derived from another project, update its commands, libraries, file names, folder layout, and examples to match this repository before keeping it.
 - **Do not preserve stale stack details:** Remove or replace inherited references to the wrong package manager, framework, language conventions, file extensions, or UI library when they do not match the current repo.
+- **Name repo-specific skills explicitly:** If a skill depends on SwiftPost-only packages, conventions, or wrappers that would not transfer cleanly to another project, prefix it with `swiftpost-`. Keep transferable guidance under generic names like `styling`, `architecture`, or `next`.
 - **Make values explicit:** When a skill depends on values like simplicity, clarity, or maintainability, state them directly in the purpose or rules instead of leaving them implicit.
 - **Prefer modern defaults:** When a skill gives coding guidance, prefer modern, intention-revealing language and platform APIs over older sentinel-style patterns when both are supported by the project's runtime targets.
 

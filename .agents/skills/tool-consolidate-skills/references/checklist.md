@@ -8,6 +8,7 @@ Use this checklist after reorganizing instructions or skills.
 - Does the owning skill now contain the detailed rule that was removed from the top-level guide?
 - Did you update the skill description so the moved guidance is still discoverable?
 - Did you replace copied-over library names, commands, file extensions, and framework references with ones that actually match this repo?
+- Did you keep reusable guidance under generic skill names and reserve the `swiftpost-` prefix for genuinely SwiftPost-specific packages or wrappers?
 - If the skill was getting long, did you move large examples, checklists, or templates into `references/`, `assets/`, or `scripts/`?
 - Are all skill resource links relative and one level deep from `SKILL.md`?
 - If you were unsure where a rule belonged, did you clarify ownership instead of duplicating it?

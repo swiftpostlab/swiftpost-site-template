@@ -33,9 +33,21 @@ All project skills are located in `.agents/skills/` and automatically load in Co
 - Monorepo layout, directory rules, feature-first architecture, file placement guide
 - Use when: designing features, structuring components, reviewing separation of concerns
 
-**`styling`** — Elysium UI library full reference
-- Every component, import paths, Slots pattern, styling utilities, theming
-- Use when: building UI, choosing components, working with sx/styles
+**`styling`** — General styling guidance
+- General styling guidance, Slots pattern, styling utilities, responsive rules
+- Use when: building UI, shaping reusable styling APIs, working with sx/styles
+
+**`swiftpost-elysium`** — SwiftPost Elysium package reference
+- `@swiftpost/elysium` imports, wrappers, theming, and package-specific styling helpers
+- Use when: working with Elysium components, import paths, or Elysium-specific utilities
+
+**`swiftpost-main`** — SwiftPost main app package overview
+- App package responsibilities, entry points, and package boundaries
+- Use when: working in `packages/main` or deciding where app-level code belongs
+
+**`swiftpost-config`** — SwiftPost shared config package overview
+- Shared ESLint and TypeScript config package purpose and boundaries
+- Use when: editing `packages/config` or changing shared tooling defaults
 
 **`code-conventions`** — TypeScript and React code quality standards
 - Strict typing, erasable types, const functions, `React.FC<Props>` pattern, early returns, hook conventions, and dependency preferences
