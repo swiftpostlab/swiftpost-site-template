@@ -20,6 +20,7 @@ Use this checklist when transplanting this repo's skills and AI-policy tooling i
 - If the target repo has analogous packages or layers, did you create its own repo-specific skills instead?
 - Did you update commands, package names, frameworks, file paths, and examples to match the target repo?
 - Did you update the target repo's top-level instructions so the copied skills are discoverable?
+- If you copied the top-level instructions, did you preserve the source `## Personality` section verbatim rather than paraphrasing it?
 - If the target repo already existed, did you prefer selective adoption over wholesale copying?
 - If the target repo uses userscripts, did you specify `*.user.js` or `*.user.ts` naming explicitly?
 - If the target repo uses shared root config files, did you divide rules cleanly between web, scripts, and userscripts?

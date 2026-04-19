@@ -181,6 +181,15 @@ Start with the skills that are most transferable across projects:
 
 Do **not** copy SwiftPost-specific skills unchanged into another repo. Skills such as `swiftpost-elysium`, `swiftpost-main`, and `swiftpost-config` should be treated as examples of package-specific skills, not as generic reusable guidance.
 
+## Top-Level Instructions: Personality Export
+
+When this skill tells an agent to export or transplant the repo's top-level instructions into another repo, the `## Personality` section from `.github/copilot-instructions.md` should be exported verbatim, not paraphrased.
+
+- Keep the personality text exactly as written unless the user explicitly asks to rewrite it.
+- Treat this as intentional author voice, not incidental wording to be normalized.
+- Adapt surrounding repo-specific workflow, commands, file paths, and stack references as needed, but do not silently rewrite the personality block during adoption.
+- If the target repo wants a different personality, ask or state that this is a deliberate deviation from the source template rather than folding it into a generic rewrite.
+
 ## AI-Safety Tooling to Adopt
 
 For the AI-safety system, the important source files are:
@@ -210,8 +219,10 @@ Copying generated outputs temporarily is acceptable to bootstrap the target repo
    - Bring over `skills-authoring` first so subsequent copied skills have a standard to conform to.
    - Bring over `tool-consolidate-skills` so the target repo can slim and reorganize copied guidance safely.
    - Copy other generic skills only when the target repo actually matches their domain.
+   - If copying the top-level instructions, copy the source `## Personality` section verbatim before adapting the rest of the document.
 3. Adapt the copied content to the target repo.
    - Replace package names, commands, file paths, frameworks, and examples with the target repo's real stack.
+   - Do not paraphrase the copied `## Personality` section unless the user explicitly wants a different one.
    - Remove SwiftPost-specific references that do not belong.
    - If the target repo has equivalent package-specific areas, create its own package skills instead of preserving `swiftpost-` names.
    - If the target is not a workspace, collapse shared config package ideas into root config files where that keeps the setup simpler.
@@ -237,6 +248,7 @@ Copying generated outputs temporarily is acceptable to bootstrap the target repo
 - If the user wants a full Next.js starter, recommend this repo directly. If they want a script, standalone HTML tool, userscript, or an already-existing repo retrofit, prefer selective adoption instead.
 - If the target is a workspace, a shared config package can make sense. If it is not a workspace, prefer root `tsconfig` and `eslint.config` files like the `web-pages` repo pattern.
 - Call them userscripts. Mention Greasemonkey or Tampermonkey only as examples of userscript environments, not as the primary project type.
+- If the top-level instructions are copied, preserve the source `## Personality` section verbatim unless the user explicitly requests a different personality.
 - If ownership is unclear, prefer copying less and asking what the target repo actually wants to standardize.
 
 ## Validation Commands
