@@ -20,9 +20,9 @@
     "lint:fix": "turbo lint:fix --ui stream",
     "typecheck": "yarn tsc --project scripts/tsconfig.json --noEmit && turbo typecheck",
     "typecheck:ci": "yarn tsc --project scripts/tsconfig.json --noEmit && turbo typecheck --ui stream",
-    "sync:ai-ignores": "node --experimental-strip-types scripts/sync-ai-policy.mts",
-    "sync:ai-ignores:import-vscode": "node --experimental-strip-types scripts/sync-ai-policy.mts --import-vscode",
-    "prepare": "yarn sync:ai-ignores"
+    "sync:ai-policy": "node --experimental-strip-types scripts/sync-ai-policy.mts",
+    "sync:ai-policy:import-vscode": "node --experimental-strip-types scripts/sync-ai-policy.mts --import-vscode",
+    "prepare": "yarn sync:ai-policy"
   },
   "dependencies": {
     "next": "^15.5.6",

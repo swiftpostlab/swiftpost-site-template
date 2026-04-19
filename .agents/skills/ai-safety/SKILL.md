@@ -58,15 +58,15 @@ The `.vscode/settings.json` approach maps protected patterns to a `copilot-restr
 2. Put sensitive patterns in `protectedFiles`.
 3. Put noisy/generated output in `excludedFiles`.
 4. Update top-level `terminalAutoApprove` and `editAutoApprove` rules when needed.
-5. Run `yarn sync:ai-ignores` to propagate changes.
+5. Run `yarn sync:ai-policy` to propagate changes.
 6. Commit all generated files (`.aiexclude`, `.claude/settings.json`, `.vscode/settings.json`).
 
-If you want to promote approvals that VS Code added interactively after the user greenlit a command, run `yarn sync:ai-ignores:import-vscode`. That imports the current VS Code terminal/edit approvals into `.ai-policy.json` first, then performs the normal sync.
+If you want to promote approvals that VS Code added interactively after the user greenlit a command, run `yarn sync:ai-policy:import-vscode`. That imports the current VS Code terminal/edit approvals into `.ai-policy.json` first, then performs the normal sync.
 
 ## Sync Script
 
 **Location:** `scripts/sync-ai-policy.mts`
-**Run:** `yarn sync:ai-ignores` or `yarn sync:ai-ignores:import-vscode` (also runs automatically on `yarn install` via `prepare` hook)
+**Run:** `yarn sync:ai-policy` or `yarn sync:ai-policy:import-vscode` (also runs automatically on `yarn install` via `prepare` hook)
 **Requires:** Node >= 22.6 (native type stripping)
 
 The script reads `.ai-policy.json` and writes:
@@ -78,4 +78,4 @@ The command/edit policy is kept at the top level of `.ai-policy.json` even thoug
 
 When syncing `.claude/settings.json` and `.vscode/settings.json`, the script replaces the policy-managed data deterministically instead of appending to it. That means removing an item from `.ai-policy.json` removes the generated output on the next sync as well. Unrelated settings are preserved where the script can distinguish them, but policy-owned sections are rewritten from source.
 
-`yarn sync:ai-ignores:import-vscode` is the explicit reverse flow. It copies the current `.vscode/settings.json` terminal/edit approval maps into `.ai-policy.json`, then runs the normal forward sync so the shared policy becomes the new source of truth.
+`yarn sync:ai-policy:import-vscode` is the explicit reverse flow. It copies the current `.vscode/settings.json` terminal/edit approval maps into `.ai-policy.json`, then runs the normal forward sync so the shared policy becomes the new source of truth.

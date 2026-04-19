@@ -95,8 +95,8 @@ For AI-assisted terminal runs, prefer the `:ci` variants of Turbo tasks because 
 - `yarn lint:fix` — Auto-fix lint issues in stream mode for AI terminal use
 - `yarn typecheck` — TypeScript type-check (all packages)
 - `yarn typecheck:ci` — TypeScript type-check in stream mode for CI and AI terminal use
- - `yarn sync:ai-ignores` — Regenerate AI config outputs from the shared policy
- - `yarn sync:ai-ignores:import-vscode` — Import current VS Code approvals into the shared policy, then resync outputs
+ - `yarn sync:ai-policy` — Regenerate AI config outputs from the shared policy
+ - `yarn sync:ai-policy:import-vscode` — Import current VS Code approvals into the shared policy, then resync outputs
 
 **Never use `npx` directly.** Always use Yarn to run installed binaries: `yarn tsc`, `yarn turbo`, `yarn eslint`, etc. If a binary isn't available, install it as a devDependency first.
 
