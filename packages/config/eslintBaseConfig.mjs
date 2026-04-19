@@ -1,16 +1,17 @@
 // @ts-check
 
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import { defineConfig } from 'eslint/config';
+import { configs as tseslintConfigs } from 'typescript-eslint';
 import reactPlugin from 'eslint-plugin-react';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
-export const eslintBaseConfig = tseslint.config(
+export const eslintBaseConfig = defineConfig(
   eslint.configs.recommended,
   reactPlugin.configs.flat.recommended, // This is not a plugin object, but a shareable config object
   reactPlugin.configs.flat['jsx-runtime'],
   eslintPluginPrettierRecommended,
-  ...tseslint.configs.strictTypeChecked,
+  ...tseslintConfigs.strictTypeChecked,
   {
     settings: {
       react: {
@@ -40,7 +41,6 @@ export const eslintBaseConfig = tseslint.config(
     languageOptions: {
       parserOptions: {
         projectService: true,
-        tsconfigRootDir: import.meta.dirname,
       },
     },
     ignores: ['node_modules', 'dist'],

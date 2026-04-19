@@ -28,5 +28,6 @@ Clarify the role of `packages/config` as the shared tooling package for linting 
 - Favor changes that benefit multiple packages rather than one-off app workarounds.
 - If a rule is only needed by one package, prefer solving it in that package unless it clearly belongs in the shared baseline.
 - Keep config changes explicit and easy to trace because they affect the entire repo.
+- For flat ESLint config files, prefer ESLint's `defineConfig` helper from `eslint/config` and consume `typescript-eslint` via named config exports instead of relying on `tseslint.config()`.
 
 For general code-style guidance, see the `code-conventions` skill. For repo-wide structure, see the `architecture` skill.
