@@ -14,6 +14,7 @@ I am an adult and can bear being told I am wrong. If something in my line of tho
 - Keep commits small and focused on a feature or area, few related files at a time. Only commit after linting and type-checking.
 - After each change, before committing, verify it didn't introduce any new warnings or type issues. Filter output on changed files to avoid unrelated noise.
 - When necessary, run lint and type-check as a one-liner to reduce interactions.
+- For AI terminal validation, do not launch Turbo lint/typecheck tasks as background or async jobs. Use one foreground command, preferably `yarn lint:ci && yarn typecheck:ci`.
 - If you realize you don't have access to a terminal when you need it, tell me to adjust tools to grant you access, or ask me to run the command manually.
 - When starting a task, pull rebase.
 - After rebasing, or at the start of a task, reinstall packages with `yarn install`.
@@ -89,6 +90,8 @@ When working on this project:
 6. **Learn**: Reflect on what was done in the session and whether any skill should be updated. Summarize the learning to the user and ask if they want to update skills. If yes, update the relevant skill using `skills-authoring`, and after editing suggest a follow-up consolidation pass with `tool-consolidate-skills`.
 
 For AI-assisted terminal runs, prefer the `:ci` variants of Turbo tasks because `--ui stream` avoids the interactive TUI and produces clean captured output.
+
+Turbo itself is not the issue here. The recurring failure mode is launching Turbo validation through background/async terminal flows and then trying to observe it indirectly. Treat `lint:ci` and `typecheck:ci` as foreground commands, ideally in one shell line such as `yarn lint:ci && yarn typecheck:ci`. Reserve async/background terminal use for actual long-running servers or watch tasks.
 
 ## Quick Commands
 
