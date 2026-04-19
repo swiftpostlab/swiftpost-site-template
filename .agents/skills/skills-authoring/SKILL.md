@@ -46,6 +46,7 @@ Use <https://agentskills.io/home> and <https://github.com/anthropics/skills> as 
 - **Name repo-specific skills explicitly:** If a skill depends on SwiftPost-only packages, conventions, or wrappers that would not transfer cleanly to another project, prefix it with `swiftpost-`. Keep transferable guidance under generic names like `styling`, `architecture`, or `next`.
 - **Make values explicit:** When a skill depends on values like simplicity, clarity, or maintainability, state them directly in the purpose or rules instead of leaving them implicit.
 - **Prefer modern defaults:** When a skill gives coding guidance, prefer modern, intention-revealing language and platform APIs over older sentinel-style patterns when both are supported by the project's runtime targets.
+- **Prefer operational labels:** When naming workflow steps or guidance sections, prefer labels that describe the actual review/update action. Favor concrete labels like `Reflect` or `Capture Lessons` over vaguer labels like `Learn` when the step includes reviewing outcomes, correcting guidance, and updating the source of truth.
 
 ## Cross-Platform Parity
 

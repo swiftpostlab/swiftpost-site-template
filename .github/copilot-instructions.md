@@ -16,7 +16,7 @@ I am an adult and can bear being told I am wrong. If something in my line of tho
 - When necessary, run lint and type-check as a one-liner to reduce interactions.
 - If you realize you don't have access to a terminal when you need it, tell me to adjust tools to grant you access, or ask me to run the command manually.
 - When starting a task, pull rebase.
-- After rebasing, or at the start of a task, reinstall packages with `yarn install`.
+- After rebasing, or at the start of a task, reinstall packages.
 - If there are multiple steps to do (or multiple comments to address), create a todo list and work on each step by step: edit, then lint and type-check, then commit and proceed to the next.
 - If the description contains any link, read them.
 - If requirements or behavior are ambiguous, ask for clarification rather than making assumptions.
@@ -86,7 +86,7 @@ When working on this project:
 3. **Code**: Follow conventions in the relevant skills
 4. **Validate**: Run lint and type-check
 5. **Commit**: Small, focused commits after validation passes
-6. **Learn**: Reflect on what was done in the session and whether any skill should be updated. Summarize the learning to the user and ask if they want to update skills. If yes, update the relevant skill using `skills-authoring`, and after editing suggest a follow-up consolidation pass with `tool-consolidate-skills`.
+6. **Reflect**: Review what happened in the session, identify both corrections and durable lessons, and decide whether any skill or instruction should be updated. Summarize the result to the user and ask if they want the guidance updated. If yes, update the relevant skill using `skills-authoring`, and after editing suggest a follow-up consolidation pass with `tool-consolidate-skills`.
 
 For AI-assisted terminal runs, prefer the `:ci` variants of Turbo tasks because `--ui stream` avoids the interactive TUI and produces clean captured output.
 
