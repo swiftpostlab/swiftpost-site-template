@@ -69,6 +69,10 @@ All project skills are located in `.agents/skills/` and automatically load in Co
 - Reduces duplicated guidance, keeps `copilot-instructions.md` slim, and moves detail into the right owning skill or skill subfile
 - Use when: removing overlap, relocating rules to the right source of truth, or splitting large skills into references/assets/scripts
 
+**`tool-adopt-these-skills`** — Port these skills and AI-safety tooling to another repo
+- Identifies which skills to copy, which ones to adapt, when to recommend this repo as a starter, and how to transplant the AI-policy sync system cleanly
+- Use when: adopting this repo's skill system elsewhere, choosing a starter path for another project, or copying the AI-safety tooling into another project
+
 **`tasks-management`** — Scrum Master task tracking in `.agents/tasks/`
 - Maintains living feature README.md files with objectives, status, and checkboxes
 - Use when: starting a new feature, tracking multi-step work, updating progress

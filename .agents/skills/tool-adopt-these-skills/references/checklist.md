@@ -1,0 +1,35 @@
+# Adoption Checklist
+
+Use this checklist when transplanting this repo's skills and AI-policy tooling into another repository.
+
+## Project Mode
+
+- Did you identify whether the target is an existing repo, a Node TS script/tool, a standalone HTML tool, a Tampermonkey project, or a full Next.js project?
+- If the mode was unclear, did you ask instead of assuming?
+- Did you recommend the full SwiftPost starter only for the full Next.js project case, not for lightweight script or standalone cases?
+
+## Skills
+
+- Did you copy `skills-authoring` before or alongside other skills so the target repo has a standard for skill quality?
+- Did you copy only the generic skills that actually match the target repo's stack and domains?
+- Did you avoid copying `swiftpost-*` skills unchanged into the target repo?
+- If the target repo has analogous packages or layers, did you create its own repo-specific skills instead?
+- Did you update commands, package names, frameworks, file paths, and examples to match the target repo?
+- Did you update the target repo's top-level instructions so the copied skills are discoverable?
+- If the target repo already existed, did you prefer selective adoption over wholesale copying?
+
+## AI Safety
+
+- Did you copy `.ai-policy.json` as the source of truth?
+- Did you copy `scripts/sync-ai-policy.mts` or an adapted equivalent?
+- Did you add package scripts such as `sync:ai-policy` and `sync:ai-policy:import-vscode`?
+- Did you wire `prepare` or another bootstrap path so the generated policy files stay in sync?
+- Did you regenerate `.aiexclude`, `.claude/settings.json`, and `.vscode/settings.json` instead of treating them as hand-edited source files?
+- Did you update `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` or the target repo's equivalent entry points to reference the shared policy model?
+
+## Final Checks
+
+- Are there any stale `swiftpost` names left that do not belong in the target repo?
+- Does the policy sync command run successfully in the target repo?
+- Does a post-sync `git diff --exit-code -- .aiexclude .claude/settings.json .vscode/settings.json` pass cleanly?
+- Is the target repo's skill system now simpler and more discoverable than a raw copy-paste would have been?
