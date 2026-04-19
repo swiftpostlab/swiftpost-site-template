@@ -139,15 +139,6 @@ Do not guess import paths. Adhere strictly to these conventions:
 | Theme values (SSR-safe) | `@/styles/staticTheme` |
 | Links/Navigation | `@swiftpost/elysium/ui/Link` (never `next/link` directly) |
 
-## Tooling Commands
-
-| Command | Purpose |
-|---------|---------|
-| `yarn dev` | Start Next.js dev server (Turbopack) |
-| `yarn build` | Production build (static export) |
-| `yarn lint` | ESLint check (all packages via Turbo) |
-| `yarn lint:fix` | Auto-fix lint issues |
-
 ## File Placement Guide
 
 | Scenario | Where | Why |
