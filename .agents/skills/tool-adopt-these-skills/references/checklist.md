@@ -4,9 +4,13 @@ Use this checklist when transplanting this repo's skills and AI-policy tooling i
 
 ## Project Mode
 
-- Did you identify whether the target is an existing repo, a Node TS script/tool, a standalone HTML tool, a Tampermonkey project, or a full Next.js project?
+- Did you identify whether the target is an existing repo, a Node TS script/tool, a standalone HTML tool, a userscript project, or a full Next.js project?
 - If the mode was unclear, did you ask instead of assuming?
 - Did you recommend the full SwiftPost starter only for the full Next.js project case, not for lightweight script or standalone cases?
+- Did you identify whether the target is a workspace/monorepo or a single-repo setup?
+- If the target is not a workspace, did you prefer root `tsconfig` and `eslint.config` files over inventing a shared config package?
+- If the target is a workspace, did you evaluate whether a shared config package is actually useful across packages?
+- If the target is a userscript project, did you use userscript-first terminology and mention Greasemonkey or Tampermonkey only as examples?
 
 ## Skills
 
@@ -17,6 +21,8 @@ Use this checklist when transplanting this repo's skills and AI-policy tooling i
 - Did you update commands, package names, frameworks, file paths, and examples to match the target repo?
 - Did you update the target repo's top-level instructions so the copied skills are discoverable?
 - If the target repo already existed, did you prefer selective adoption over wholesale copying?
+- If the target repo uses userscripts, did you specify `*.user.js` or `*.user.ts` naming explicitly?
+- If the target repo uses shared root config files, did you divide rules cleanly between web, scripts, and userscripts?
 
 ## AI Safety
 

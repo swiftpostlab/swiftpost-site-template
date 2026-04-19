@@ -57,7 +57,29 @@ Keep instructions consistent across all platform-specific files:
 | `GEMINI.md` | Google Gemini |
 | `CLAUDE.md` | Anthropic Claude |
 
-The copilot-instructions file is the source of truth. GEMINI.md and CLAUDE.md should reference it rather than duplicate content.
+The Copilot instructions file is the source of truth.
+
+Default pattern for this repo and most repos:
+
+- Put the real guidance in `.github/copilot-instructions.md`.
+- Make `GEMINI.md` and `CLAUDE.md` thin reference files that tell the agent to read the Copilot instructions first.
+- Do not duplicate the same workflow, commands, or policy text across all three files when a reference is enough.
+
+Cross-platform parity means the effective guidance should match across providers, not that every file must contain the same amount of text.
+
+Only add provider-specific text in `GEMINI.md` or `CLAUDE.md` when there is a real platform-specific need, such as:
+
+- a required bootstrap instruction that must appear in that provider's entry file,
+- a provider-specific limitation or capability that changes how the repo must be operated,
+- or a provider-specific routing note that cannot live solely in the shared Copilot instructions.
+
+When that happens:
+
+- keep the provider-specific file minimal,
+- state only the platform-specific exception,
+- and route back to `.github/copilot-instructions.md` for the actual repo guidance.
+
+If there is no real provider-specific behavior, nothing else needs to be done beyond the reference stub.
 
 ## Communication Guidelines
 

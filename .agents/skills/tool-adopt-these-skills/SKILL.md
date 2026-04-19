@@ -1,7 +1,7 @@
 ---
 name: tool-adopt-these-skills
 description: "Adopt the most useful skills and AI-safety tooling from this repo into another repo. Use when: porting this repo's skill system elsewhere, choosing a starter approach for a new project, copying reusable skills into a new codebase, or transplanting the AI policy sync workflow and files into another project."
-argument-hint: "What kind of target project is this: existing repo, Node TS script, standalone HTML, Tampermonkey, full Next.js project, or other?"
+argument-hint: "What kind of target project is this: existing repo, Node TS script, standalone HTML, userscript, full Next.js project, or other?"
 ---
 
 # Adopt These Skills
@@ -26,7 +26,7 @@ Pick one of these modes:
 1. Existing repo that is already set up
 2. New Node + TypeScript script/tool repo
 3. New standalone HTML tool
-4. New Tampermonkey userscript project
+4. New userscript project
 5. New full Next.js project
 6. Other or unclear
 
@@ -37,6 +37,66 @@ If the user has not made the target clear, ask which mode they want and whether 
 - or only selected reusable skills.
 
 Treat this as a small interactive decision step. Choose the mode first, then give only the relevant transplant guidance.
+
+## Recommended Skills By Mode
+
+Use this matrix as the compact default recommendation after the mode is known.
+
+| Mode | Default recommendation |
+|------|------------------------|
+| Existing repo already set up | `skills-authoring`, `tool-consolidate-skills`, selective `ai-safety`, then only the domain skills that match the existing stack |
+| New Node + TypeScript script/tool repo | `skills-authoring`, `tool-consolidate-skills`, adapted `code-conventions`, optional `ai-safety` |
+| New standalone HTML tool | `skills-authoring` only if a skill system is desired, optional `ai-safety`, otherwise prefer lightweight project-specific guidance |
+| New userscript project | `skills-authoring` only if needed, optional `ai-safety`, then create a project-specific userscript skill |
+| New full Next.js project | recommend this repo as starter, then adapt `architecture`, `styling`, `next`, `code-conventions`, `ai-safety`, and package-specific skills as needed |
+| Other or unclear | ask first; do not recommend a full transplant until the project type is explicit |
+
+## Config Structure: Workspace Or Single Repo
+
+After identifying the mode, decide whether the target should use shared config packages or root config files.
+
+- If the target is a real workspace or monorepo with multiple packages/apps, suggest a shared config package similar to this repo's `packages/config`.
+- If the target is a single repo or lightweight project, prefer root config files instead of inventing a config package.
+
+For a non-workspace pattern, `web-pages` is the reference shape:
+
+- root `eslint.config.mjs`
+- root `tsconfig.base.json`
+- root `tsconfig.json` for Node/script code
+- optional extra root tsconfig files such as `tsconfig.web.json` for browser-side code
+
+Treat this as a common base plus focused per-surface rules:
+
+- keep a shared TypeScript baseline in `tsconfig.base.json`
+- keep a shared ESLint entrypoint in root `eslint.config.*`
+- divide file-specific rules by surface: web, scripts, and userscripts
+
+For scripts, prefer explicit module-oriented extensions:
+
+- TypeScript scripts: `.mts` and `.ts` when appropriate
+- JavaScript modules: `.mjs`
+- CommonJS only when required: `.cts` or `.cjs`
+
+CommonJS is allowed when necessary, but prefer ESM/module-based files by default.
+
+For userscripts, prefer dedicated userscript file names and rules:
+
+- use `*.user.js` or `*.user.ts`
+- keep userscript-specific linting separate from generic browser code
+- if needed, add userscript-specific ESLint support such as `eslint-plugin-userscripts`: `https://www.npmjs.com/package/eslint-plugin-userscripts`
+
+Use the simpler root-config pattern for:
+
+- standalone HTML repos
+- userscript repos
+- small Node + TypeScript script/tool repos
+- single-app repos that do not need shared config reuse across packages
+
+Use a shared config package pattern for:
+
+- monorepos
+- multi-package workspaces
+- setups where multiple apps/packages must share the same lint and TS baseline
 
 ## Mode 1: Existing Repo Already Set Up
 
@@ -56,6 +116,9 @@ Use this mode for small automation repos, CLIs, script collections, or utility p
 - Copy the AI-safety tooling only if the target wants multi-agent restrictions and generated policy outputs.
 - Do not recommend the full SwiftPost Next.js template as a starter for this case.
 - Remove Next.js, React, MUI, and app-shell assumptions from any copied guidance.
+- Prefer root `eslint.config.*` and root `tsconfig*.json` files rather than creating a shared config package unless the target is already a workspace.
+- Use the shared root config as the base, then keep script-specific rules scoped to `.mts`, `.mjs`, `.cts`, and `.cjs` files as needed.
+- Prefer `.mts` or `.mjs` over CommonJS unless the environment forces `.cts` or `.cjs`.
 
 ## Mode 3: New Standalone HTML Tool
 
@@ -64,15 +127,20 @@ Use this mode when the user wants a self-contained browser tool or single-page u
 - Usually copy no more than the skill-system patterns and, optionally, AI-safety tooling.
 - Do not recommend the full SwiftPost Next.js template as a starter for a standalone HTML file.
 - If the target repo is being created only for standalone HTML utilities, adapt or author HTML-specific skills instead of copying app-framework guidance.
+- Prefer root config files if any config files are needed at all; do not introduce a config package here.
 
-## Mode 4: New Tampermonkey Userscript Project
+## Mode 4: New Userscript Project
 
-Use this mode when the output is meant to run as a userscript on top of an existing website.
+Use this mode when the output is meant to run as a userscript on top of an existing website. Greasemonkey and Tampermonkey are examples of the environment, but the primary concept is a userscript project.
 
 - Treat this like a lightweight script-oriented repo, not like a web app.
 - Copy only the minimal reusable skills that help with structure and maintenance.
 - Do not recommend the full SwiftPost Next.js template as a starter for this case.
 - Prefer creating a project-specific userscript skill rather than copying framework-centric skills.
+- Prefer root config files instead of a shared config package.
+- Name userscript entry files with `*.user.js` or `*.user.ts` explicitly.
+- Keep userscript rules separate from generic web or Node rules inside the shared root ESLint/tsconfig setup.
+- If the repo needs richer userscript linting, consider adding `eslint-plugin-userscripts` and scoping it to userscript files.
 
 ## Mode 5: New Full Next.js Project
 
@@ -89,6 +157,9 @@ Recommend these starter options:
 Use this recommendation when the user wants a full Next.js project with a usable starting structure rather than a narrow transplant of individual skills.
 
 Even in this mode, the copied guidance must still be adapted to the new repo's real stack, branding, package names, and scope.
+
+- If the target is a monorepo or is expected to host multiple packages, keeping a shared config package like `packages/config` is appropriate.
+- If the target is just one app repo, consider simplifying to root `eslint.config.*` and root `tsconfig*.json` files instead of preserving workspace overhead by default.
 
 ## Mode 6: Other Or Unclear
 
@@ -133,7 +204,8 @@ Copying generated outputs temporarily is acceptable to bootstrap the target repo
    - Identify its stack, package manager, language, framework, and directory layout.
    - Identify which of this repo's skills are genuinely reusable there.
    - Identify which SwiftPost-specific skills need equivalents rather than copies.
-   - Identify whether the situation is an existing repo, a lightweight script/tool, or a full app starter case.
+   - Identify whether the situation is an existing repo, a lightweight script/tool, a userscript repo, or a full app starter case.
+   - Identify whether the target is a workspace/monorepo or a single-repo setup.
 2. Copy the reusable base skills.
    - Bring over `skills-authoring` first so subsequent copied skills have a standard to conform to.
    - Bring over `tool-consolidate-skills` so the target repo can slim and reorganize copied guidance safely.
@@ -142,6 +214,7 @@ Copying generated outputs temporarily is acceptable to bootstrap the target repo
    - Replace package names, commands, file paths, frameworks, and examples with the target repo's real stack.
    - Remove SwiftPost-specific references that do not belong.
    - If the target repo has equivalent package-specific areas, create its own package skills instead of preserving `swiftpost-` names.
+   - If the target is not a workspace, collapse shared config package ideas into root config files where that keeps the setup simpler.
 4. Adopt the AI-safety source files.
    - Copy `.ai-policy.json` and `scripts/sync-ai-policy.mts`.
    - Add the sync scripts to the target repo's `package.json`.
@@ -161,7 +234,9 @@ Copying generated outputs temporarily is acceptable to bootstrap the target repo
 - If a skill depends on repo-only packages or wrappers, create a repo-specific replacement skill in the target repo.
 - If the target repo does not use TypeScript, React, Next.js, or the same folder conventions, adapt aggressively instead of preserving wording.
 - If the target repo wants the AI-safety tooling but not the full skill system, copy only the policy source files, sync script, and cross-agent routing docs.
-- If the user wants a full Next.js starter, recommend this repo directly. If they want a script, standalone HTML tool, Tampermonkey userscript, or an already-existing repo retrofit, prefer selective adoption instead.
+- If the user wants a full Next.js starter, recommend this repo directly. If they want a script, standalone HTML tool, userscript, or an already-existing repo retrofit, prefer selective adoption instead.
+- If the target is a workspace, a shared config package can make sense. If it is not a workspace, prefer root `tsconfig` and `eslint.config` files like the `web-pages` repo pattern.
+- Call them userscripts. Mention Greasemonkey or Tampermonkey only as examples of userscript environments, not as the primary project type.
 - If ownership is unclear, prefer copying less and asking what the target repo actually wants to standardize.
 
 ## Validation Commands
