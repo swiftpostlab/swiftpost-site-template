@@ -197,13 +197,15 @@ For the AI-safety system, the important source files are:
 - `.ai-policy.json` as the source of truth.
 - `scripts/sync-ai-policy.mts` as the sync implementation.
 - `package.json` scripts that run the sync, especially `sync:ai-policy`, `sync:ai-policy:import-vscode`, and the `prepare` hook.
-- `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` if the target repo wants the same cross-agent routing pattern.
+- `.claude/CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` if the target repo wants the same cross-agent routing pattern.
 
 Generated files should usually be regenerated in the target repo instead of copied as authoritative source:
 
 - `.aiexclude`
 - `.claude/settings.json`
 - `.vscode/settings.json`
+
+If the target repo keeps this repo's Gemini/native exclusion pattern, keep `.aiexclude` at the repo root. Do not move it into `.gemini/`; Gemini CLI's `.geminiignore` is a separate mechanism.
 
 Copying generated outputs temporarily is acceptable to bootstrap the target repo, but the source of truth must still become `.ai-policy.json` plus the sync script.
 
@@ -230,6 +232,7 @@ Copying generated outputs temporarily is acceptable to bootstrap the target repo
    - Copy `.ai-policy.json` and `scripts/sync-ai-policy.mts`.
    - Add the sync scripts to the target repo's `package.json`.
    - Wire the target repo's Copilot, Claude, and Gemini entry-point docs to honor the shared policy model.
+   - For this repo's pattern specifically, keep `GEMINI.md` at repo root, keep Claude's entry file at `.claude/CLAUDE.md`, and prefer repo-root `@.github/copilot-instructions.md` imports over relative import paths.
    - Regenerate outputs in the target repo instead of preserving stale generated files from this repo.
 5. Regenerate the target repo outputs.
    - Run `yarn sync:ai-policy` or the equivalent adapted package-manager command.

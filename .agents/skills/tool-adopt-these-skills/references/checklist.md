@@ -32,7 +32,7 @@ Use this checklist when transplanting this repo's skills and AI-policy tooling i
 - Did you add package scripts such as `sync:ai-policy` and `sync:ai-policy:import-vscode`?
 - Did you wire `prepare` or another bootstrap path so the generated policy files stay in sync?
 - Did you regenerate `.aiexclude`, `.claude/settings.json`, and `.vscode/settings.json` instead of treating them as hand-edited source files?
-- Did you update `CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` or the target repo's equivalent entry points to reference the shared policy model?
+- Did you update `.claude/CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` or the target repo's equivalent entry points to reference the shared policy model?
 
 ## Final Checks
 
