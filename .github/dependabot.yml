@@ -17,3 +17,7 @@ updates:
           - "react"
           - "react-dom"
           - "next"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
