@@ -1,4 +1,4 @@
-# ============================================================================== 
+# ==============================================================================
 # AI EXCLUSION FILE
 # Generated from .ai-policy.json
 # Protected files are sensitive; excluded files are mostly noise or generated output.
@@ -27,3 +27,5 @@ tmp/
 temp/
 logs/
 .turbo/
+.playground/
+.tasks/

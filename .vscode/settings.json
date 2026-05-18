@@ -28,6 +28,7 @@
     "wget": false
   },
   "files.associations": {
+    ".aiexclude": "ignore",
     "*.env": "copilot-restricted-file",
     "*.env.*": "copilot-restricted-file",
     "*.pem": "copilot-restricted-file",

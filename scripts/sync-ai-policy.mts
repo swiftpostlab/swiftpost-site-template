@@ -94,6 +94,10 @@ const replaceManagedClaudeDenyRules = (existing: string[] | undefined, protected
 const buildProtectedFileAssociations = (protectedFiles: string[]): Record<string, string> =>
   Object.fromEntries(protectedFiles.map((pattern) => [pattern, 'copilot-restricted-file']));
 
+const generatedFileAssociations: Record<string, string> = {
+  '.aiexclude': 'ignore',
+};
+
 const replaceManagedFileAssociations = (
   existing: Record<string, string> | undefined,
   protectedFiles: string[],
@@ -101,12 +105,13 @@ const replaceManagedFileAssociations = (
   ...Object.fromEntries(
     Object.entries(existing ?? {}).filter(([, languageId]) => languageId !== 'copilot-restricted-file'),
   ),
+  ...generatedFileAssociations,
   ...buildProtectedFileAssociations(protectedFiles),
 });
 
 const buildAiExcludeContent = (policy: AiPolicy): string => {
   const lines = [
-    '# ============================================================================== ',
+    '# ==============================================================================',
     '# AI EXCLUSION FILE',
     '# Generated from .ai-policy.json',
     '# Protected files are sensitive; excluded files are mostly noise or generated output.',
