@@ -1,10 +1,13 @@
 ---
-name: tool-adopt-these-skills
-description: "Adopt the most useful skills and AI-safety tooling from this repo into another repo. Use when: porting this repo's skill system elsewhere, choosing a starter approach for a new project, copying reusable skills into a new codebase, or transplanting the AI policy sync workflow and files into another project."
+name: tool-adopt-swiftpost-site-template
+description: "Adopt the SwiftPost Site Template skill and AI-safety setup into another repo. Use when: porting this template's repo-local guidance elsewhere, choosing whether this template fits a new project, or transplanting the local AI policy sync workflow."
+metadata:
+   shareable-skills.visibility: "repo-local"
+   shareable-skills.reason: "This workflow is specifically for adopting this template's local setup elsewhere."
 argument-hint: "What kind of target project is this: existing repo, Node TS script, standalone HTML, userscript, full Next.js project, or other?"
 ---
 
-# Adopt These Skills
+# Adopt SwiftPost Site Template
 
 ## Purpose
 
@@ -44,11 +47,11 @@ Use this matrix as the compact default recommendation after the mode is known.
 
 | Mode | Default recommendation |
 |------|------------------------|
-| Existing repo already set up | `skills-authoring`, `tool-consolidate-skills`, selective `ai-safety`, then only the domain skills that match the existing stack |
-| New Node + TypeScript script/tool repo | `skills-authoring`, `tool-consolidate-skills`, adapted `code-conventions`, optional `ai-safety` |
-| New standalone HTML tool | `skills-authoring` only if a skill system is desired, optional `ai-safety`, otherwise prefer lightweight project-specific guidance |
-| New userscript project | `skills-authoring` only if needed, optional `ai-safety`, then create a project-specific userscript skill |
-| New full Next.js project | recommend this repo as starter, then adapt `architecture`, `styling`, `next`, `code-conventions`, `ai-safety`, and package-specific skills as needed |
+| Existing repo already set up | shared `ref-skills-authoring`, shared `tool-maintain-skills`, selective `ref-swiftpost-ai-safety`, then only the domain skills that match the existing stack |
+| New Node + TypeScript script/tool repo | shared `ref-skills-authoring`, shared `tool-maintain-skills`, adapted `ref-swiftpost-code-conventions`, optional `ref-swiftpost-ai-safety` |
+| New standalone HTML tool | shared `ref-skills-authoring` only if a skill system is desired, optional `ref-swiftpost-ai-safety`, otherwise prefer lightweight project-specific guidance |
+| New userscript project | shared `ref-skills-authoring` only if needed, optional `ref-swiftpost-ai-safety`, then create a project-specific userscript skill |
+| New full Next.js project | recommend this repo as starter, then adapt `ref-swiftpost-site-architecture`, `ref-styling`, `ref-swiftpost-next`, `ref-swiftpost-code-conventions`, `ref-swiftpost-ai-safety`, and package-specific skills as needed |
 | Other or unclear | ask first; do not recommend a full transplant until the project type is explicit |
 
 ## Config Structure: Workspace Or Single Repo
@@ -104,15 +107,15 @@ Use this mode when the target repo already has code, tooling, and conventions.
 
 - Inspect the existing stack before recommending any copied skill.
 - Prefer selective adoption over wholesale copying.
-- Bring over `skills-authoring` and `tool-consolidate-skills` first if the target wants a maintainable skill system.
-- Bring over `ai-safety` only if the target actually wants shared policy-driven restrictions.
+- Bring over shared `ref-skills-authoring` and `tool-maintain-skills` first if the target wants a maintainable skill system.
+- Bring over `ref-swiftpost-ai-safety` only if the target actually wants this template's policy-driven restrictions.
 - Do not recommend this repo as a starter when the target repo already exists unless the user is effectively rebuilding it.
 
 ## Mode 2: New Node + TypeScript Script/Tool Repo
 
 Use this mode for small automation repos, CLIs, script collections, or utility projects.
 
-- Prefer copying `skills-authoring`, `tool-consolidate-skills`, and adapted pieces of `code-conventions`.
+- Prefer copying shared `ref-skills-authoring`, shared `tool-maintain-skills`, and adapted pieces of `ref-swiftpost-code-conventions`.
 - Copy the AI-safety tooling only if the target wants multi-agent restrictions and generated policy outputs.
 - Do not recommend the full SwiftPost Next.js template as a starter for this case.
 - Remove Next.js, React, MUI, and app-shell assumptions from any copied guidance.
@@ -173,13 +176,13 @@ If the target does not fit the modes above, or if the request is ambiguous:
 
 Start with the skills that are most transferable across projects:
 
-- `skills-authoring` for how skills should be structured and maintained.
-- `tool-consolidate-skills` for keeping top-level instructions slim and moving detail into the right skills.
-- `code-conventions` if the target repo is also TypeScript/React or close enough to adapt it quickly.
-- `architecture`, `styling`, and `next` only if the target repo has the same broad problem space.
-- `tasks-management` if the target repo wants task tracking in `.agents/tasks/`.
+- shared `ref-skills-authoring` for how skills should be structured and maintained.
+- shared `tool-maintain-skills` for keeping top-level instructions slim and moving detail into the right skills.
+- `ref-swiftpost-code-conventions` if the target repo is also TypeScript/React or close enough to adapt it quickly.
+- `ref-swiftpost-site-architecture`, `ref-styling`, and `ref-swiftpost-next` only if the target repo has the same broad problem space.
+- shared `ref-agents-local-tasks` and `tool-handle-agents-local-tasks` if the target repo wants task tracking in `.agents/tasks/`.
 
-Do **not** copy SwiftPost-specific skills unchanged into another repo. Skills such as `swiftpost-elysium`, `swiftpost-main`, and `swiftpost-config` should be treated as examples of package-specific skills, not as generic reusable guidance.
+Do **not** copy SwiftPost-specific skills unchanged into another repo. Skills such as `ref-swiftpost-elysium`, `ref-swiftpost-main`, and `ref-swiftpost-config` should be treated as examples of package-specific skills, not as generic reusable guidance.
 
 ## Top-Level Instructions: Personality Export
 
@@ -218,8 +221,8 @@ Copying generated outputs temporarily is acceptable to bootstrap the target repo
    - Identify whether the situation is an existing repo, a lightweight script/tool, a userscript repo, or a full app starter case.
    - Identify whether the target is a workspace/monorepo or a single-repo setup.
 2. Copy the reusable base skills.
-   - Bring over `skills-authoring` first so subsequent copied skills have a standard to conform to.
-   - Bring over `tool-consolidate-skills` so the target repo can slim and reorganize copied guidance safely.
+   - Bring over shared `ref-skills-authoring` first so subsequent copied skills have a standard to conform to.
+   - Bring over shared `tool-maintain-skills` so the target repo can slim and reorganize copied guidance safely.
    - Copy other generic skills only when the target repo actually matches their domain.
    - If copying the top-level instructions, copy the source `## Personality` section verbatim before adapting the rest of the document.
 3. Adapt the copied content to the target repo.

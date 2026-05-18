@@ -1,9 +1,12 @@
 ---
-name: ai-safety
-description: "AI policy, protected file access, and exclusion sync. Use when: modifying .ai-policy.json, updating the sync script, or reviewing AI safety configuration."
+name: ref-swiftpost-ai-safety
+description: "SwiftPost Site Template AI policy, protected file access, and exclusion sync. Use when: modifying .ai-policy.json, updating the local sync script, or reviewing this template's AI safety configuration."
+metadata:
+    shareable-skills.visibility: "repo-local"
+    shareable-skills.reason: "This skill documents this template's local AI safety policy and generated outputs."
 ---
 
-# AI Safety
+# SwiftPost AI Safety
 
 ## Purpose
 

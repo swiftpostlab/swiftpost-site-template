@@ -1,9 +1,12 @@
 ---
-name: code-conventions
-description: "TypeScript and React code quality standards. Use when: creating components, writing hooks, reviewing TypeScript code, or applying project coding patterns."
+name: ref-swiftpost-code-conventions
+description: "SwiftPost Site Template TypeScript and React code quality standards. Use when: creating components, writing hooks, reviewing TypeScript code, or applying template-specific coding patterns."
+metadata:
+  shareable-skills.visibility: "repo-local"
+  shareable-skills.reason: "This skill contains SwiftPost Site Template-specific TypeScript and React conventions."
 ---
 
-# Code Conventions
+# SwiftPost Code Conventions
 
 ## Purpose
 

@@ -1,9 +1,12 @@
 ---
-name: next
-description: "Next.js conventions and constraints for this project. Use when: creating pages, working with routing, managing client/server boundaries, or configuring Next.js."
+name: ref-swiftpost-next
+description: "SwiftPost Site Template Next.js static-export conventions and constraints. Use when: creating pages, working with routing, managing client/server boundaries, or configuring Next.js in this template."
+metadata:
+  shareable-skills.visibility: "repo-local"
+  shareable-skills.reason: "This skill contains Next.js guidance specific to this template's static-export setup."
 ---
 
-# Next.js Conventions
+# SwiftPost Next.js Conventions
 
 ## Purpose
 

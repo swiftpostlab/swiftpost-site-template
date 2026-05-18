@@ -1,6 +1,9 @@
 ---
-name: swiftpost-config
+name: ref-swiftpost-config
 description: "SwiftPost shared config package overview. Use when: editing packages/config, adjusting shared ESLint or TypeScript config, or deciding whether tooling rules belong in the config package."
+metadata:
+  shareable-skills.visibility: "repo-local"
+  shareable-skills.reason: "This skill documents the template's local packages/config workspace."
 ---
 
 # SwiftPost Config
@@ -30,4 +33,4 @@ Clarify the role of `packages/config` as the shared tooling package for linting 
 - Keep config changes explicit and easy to trace because they affect the entire repo.
 - For flat ESLint config files, prefer ESLint's `defineConfig` helper from `eslint/config` and consume `typescript-eslint` via named config exports instead of relying on `tseslint.config()`.
 
-For general code-style guidance, see the `code-conventions` skill. For repo-wide structure, see the `architecture` skill.
+For general code-style guidance, see the `ref-swiftpost-code-conventions` skill. For repo-wide structure, see the `ref-swiftpost-site-architecture` skill.

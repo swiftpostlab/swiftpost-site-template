@@ -1,6 +1,9 @@
 ---
-name: swiftpost-main
+name: ref-swiftpost-main
 description: "SwiftPost main app package overview. Use when: working in packages/main, placing app code, understanding package boundaries, or deciding whether logic belongs in the app package versus another package."
+metadata:
+  shareable-skills.visibility: "repo-local"
+  shareable-skills.reason: "This skill documents the template's local packages/main app package."
 ---
 
 # SwiftPost Main
@@ -37,4 +40,4 @@ Clarify the role of `packages/main` as the deployed Next.js app package. Use thi
 - `next.config.ts` sets `output: 'export'` and a production `basePath` for deployment.
 - Prefer thin route entry points and keep reusable UI logic out of the route file when possible.
 
-For framework-wide rules that can apply to other Next.js projects, see the `next` skill. For repo-wide structure, see the `architecture` skill.
+For framework-wide rules that can apply to other Next.js projects, see the shared `ref-js-next` skill. For this repo's structure, see the `ref-swiftpost-site-architecture` skill.

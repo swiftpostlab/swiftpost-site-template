@@ -24,58 +24,97 @@ I am an adult and can bear being told I am wrong. If something in my line of tho
 
 ## Project Skills
 
-All project skills are located in `.agents/skills/` and automatically load in Copilot based on context and trigger phrases.
+Project skills are located in `.agents/skills/` and automatically load in Copilot based on context and trigger phrases. Shared skills are declared in `.agents/skills.json` and synced from the installed `agentic-tools` package; SwiftPost-specific skills remain local in this repository.
 
 ### Available Skills
 
-**`architecture`** — Repo-wide architectural decisions
-- Modularity, feature isolation, component composition, client/server boundaries
-- Monorepo layout, directory rules, feature-first architecture, file placement guide
-- Use when: designing features, structuring components, reviewing separation of concerns
+**Shared skills from `agentic-tools`:**
 
-**`styling`** — General styling guidance
-- General styling guidance, Slots pattern, styling utilities, responsive rules
-- Use when: building UI, shaping reusable styling APIs, working with sx/styles
+**`ref-agents-instructions-authoring`** — Multi-provider agent instruction structure
+- Use when: updating Copilot, Gemini, or Claude instruction bridges
 
-**`swiftpost-elysium`** — SwiftPost Elysium package reference
-- `@swiftpost/elysium` imports, wrappers, theming, and package-specific styling helpers
-- Use when: working with Elysium components, import paths, or Elysium-specific utilities
+**`ref-agents-local-tasks`** — Local `.agents/tasks/` backlog and task notes
+- Use when: reading or updating local task tracking
 
-**`swiftpost-main`** — SwiftPost main app package overview
-- App package responsibilities, entry points, and package boundaries
-- Use when: working in `packages/main` or deciding where app-level code belongs
+**`ref-agents-persona`** — Agent voice and workflow expectations
+- Use when: starting work, planning commits, or preserving the expected collaboration style
 
-**`swiftpost-config`** — SwiftPost shared config package overview
-- Shared ESLint and TypeScript config package purpose and boundaries
+**`ref-app-react-next`** — App-level React/Next guidance
+- Use when: shaping whole-app React/Next structure or stack decisions
+
+**`ref-coding-patterns`** — Portable coding defaults
+- Use when: choosing naming, typing, comments, CLI ergonomics, or testing posture
+
+**`ref-docs-authoring`** — README and documentation authoring
+- Use when: writing or restructuring docs and examples
+
+**`ref-git-commits`** — Commit grouping and message guidance
+- Use when: creating focused commits or deciding commit boundaries
+
+**`ref-github-actions-ci`** — GitHub Actions CI guidance
+- Use when: creating or reviewing workflows
+
+**`ref-github-dependabot`** — Dependabot configuration guidance
+- Use when: tuning dependency update configuration
+
+**`ref-js-javascript`** — Plain JavaScript with JSDoc guidance
+- Use when: writing scripts or JS modules without TypeScript compilation
+
+**`ref-js-next`** — Next.js App Router guidance
+- Use when: creating routes, layouts, and Next-specific boundaries
+
+**`ref-js-react`** — React component and hook guidance
+- Use when: writing or reviewing React components
+
+**`ref-js-typescript`** — TypeScript typing and runtime-boundary guidance
+- Use when: writing or reviewing strict TypeScript code
+
+**`ref-projects-architecture`** — Portable feature and repository architecture
+- Use when: deciding where code should live or splitting features
+
+**`ref-skills-authoring`** — Skill authoring standards
+- Use when: creating or maintaining skills
+
+**`tool-commit`** — Focused commit workflow
+- Use when: staging and committing changed files
+
+**`tool-handle-agents-local-tasks`** — Work through local task backlog
+- Use when: processing `.agents/tasks/TODO.md`
+
+**`tool-maintain-agents-instructions`** — Refresh agent instruction files
+- Use when: instruction files may be stale after skill or workflow changes
+
+**`tool-maintain-skills`** — Refresh and consolidate project skills
+- Use when: skills may be outdated or duplicated
+
+**SwiftPost-specific local skills:**
+
+**`ref-swiftpost-site-architecture`** — SwiftPost Site Template architecture and package boundaries
+- Use when: designing features, structuring components, or deciding where code goes
+
+**`ref-styling`** — Styling and Slots-pattern guidance
+- Use when: building UI, shaping reusable styling APIs, or working with `sx`/styles
+
+**`ref-swiftpost-elysium`** — SwiftPost Elysium package reference
+- Use when: working with Elysium components, import paths, wrappers, or theming helpers
+
+**`ref-swiftpost-main`** — Main app package overview
+- Use when: working in `packages/main` or deciding whether logic belongs in the app package
+
+**`ref-swiftpost-config`** — Shared config package overview
 - Use when: editing `packages/config` or changing shared tooling defaults
 
-**`code-conventions`** — TypeScript and React code quality standards
-- Strict typing, erasable types, const functions, `React.FC<Props>` pattern, early returns, hook conventions, and dependency preferences
-- Use when: creating components, writing hooks, reviewing TypeScript code
+**`ref-swiftpost-code-conventions`** — TypeScript and React code quality standards
+- Use when: creating components, writing hooks, or reviewing TypeScript code
 
-**`next`** — Next.js conventions and constraints
-- Static export rules, page pattern, client/server boundaries, routing
-- Use when: creating pages, working with routing, configuring Next.js
+**`ref-swiftpost-next`** — Template-specific Next.js conventions
+- Use when: creating pages, working with static export routing, or configuring Next.js
 
-**`ai-safety`** — AI-restricted file access and sync mechanism
-- Documents `.aiexclude` patterns, sync script, and per-agent restriction mechanisms
-- Use when: modifying restricted patterns, updating sync script, reviewing AI safety config
+**`ref-swiftpost-ai-safety`** — AI-restricted file access and sync mechanism
+- Use when: modifying restricted patterns, sync scripts, or AI safety config
 
-**`skills-authoring`** — Guidelines for creating and maintaining project skills
-- Ensures skills are focused, discoverable, and provider-agnostic
-- Use when: designing new skills or evaluating skill quality
-
-**`tool-consolidate-skills`** — Consolidate overlapping skills and instruction files
-- Reduces duplicated guidance, keeps `copilot-instructions.md` slim, and moves detail into the right owning skill or skill subfile
-- Use when: removing overlap, relocating rules to the right source of truth, or splitting large skills into references/assets/scripts
-
-**`tool-adopt-these-skills`** — Port these skills and AI-safety tooling to another repo
-- Identifies which skills to copy, which ones to adapt, when to recommend this repo as a starter, and how to transplant the AI-policy sync system cleanly
-- Use when: adopting this repo's skill system elsewhere, choosing a starter path for another project, or copying the AI-safety tooling into another project
-
-**`tasks-management`** — Scrum Master task tracking in `.agents/tasks/`
-- Maintains living feature README.md files with objectives, status, and checkboxes
-- Use when: starting a new feature, tracking multi-step work, updating progress
+**`tool-adopt-swiftpost-site-template`** — Adopt this template elsewhere
+- Use when: porting this template's skills, setup, or AI-safety tooling into another repo
 
 ## Workflow
 
@@ -86,7 +125,7 @@ When working on this project:
 3. **Code**: Follow conventions in the relevant skills
 4. **Validate**: Run lint and type-check
 5. **Commit**: Small, focused commits after validation passes
-6. **Reflect**: Review what happened in the session, identify both corrections and durable lessons, and decide whether any skill or instruction should be updated. Summarize the result to the user and ask if they want the guidance updated. If yes, update the relevant skill using `skills-authoring`, and after editing suggest a follow-up consolidation pass with `tool-consolidate-skills`.
+6. **Reflect**: Review what happened in the session, identify both corrections and durable lessons, and decide whether any skill or instruction should be updated. Summarize the result to the user and ask if they want the guidance updated. If yes, update the relevant skill using `ref-skills-authoring`, and after editing suggest a follow-up maintenance pass with `tool-maintain-skills`.
 
 For AI-assisted terminal runs, prefer the `:ci` variants of Turbo tasks because `--ui stream` avoids the interactive TUI and produces clean captured output.
 
@@ -101,8 +140,10 @@ For AI-assisted terminal runs, execute finite commands whose final output and ex
 - `yarn lint:fix` — Auto-fix lint issues in stream mode for AI terminal use
 - `yarn typecheck` — TypeScript type-check (all packages)
 - `yarn typecheck:ci` — TypeScript type-check in stream mode for CI and AI terminal use
- - `yarn sync:ai-policy` — Regenerate AI config outputs from the shared policy
- - `yarn sync:ai-policy:import-vscode` — Import current VS Code approvals into the shared policy, then resync outputs
+- `yarn sync:skills` — Sync shared skills declared in `.agents/skills.json` from the installed `agentic-tools` package
+- `yarn upgrade:agentic-tools` — Refresh the Git-installed `agentic-tools` dependency
+- `yarn sync:ai-policy` — Regenerate AI config outputs from the shared policy
+- `yarn sync:ai-policy:import-vscode` — Import current VS Code approvals into the shared policy, then resync outputs
 
 **Never use `npx` directly.** Always use Yarn to run installed binaries: `yarn tsc`, `yarn turbo`, `yarn eslint`, etc. If a binary isn't available, install it as a devDependency first.
 

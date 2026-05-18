@@ -1,6 +1,9 @@
 ---
-name: styling
+name: ref-styling
 description: "General styling guidance. Use when: building UI, structuring reusable styling APIs, working with sx/styles, responsive rules, or slot-based composition patterns that can apply across projects."
+metadata:
+  shareable-skills.visibility: "repo-local"
+  shareable-skills.reason: "This skill contains SwiftPost Site Template-specific styling guidance."
 ---
 
 # Styling
@@ -76,7 +79,7 @@ export type CustomCardProps = Props;
 export default memo(CustomCard);
 ```
 
-Adapt the slot and style utilities to the UI layer used by the project. For SwiftPost's concrete implementation and package-specific imports, see the `swiftpost-elysium` skill.
+Adapt the slot and style utilities to the UI layer used by the project. For SwiftPost's concrete implementation and package-specific imports, see the `ref-swiftpost-elysium` skill.
 
 ---
 
@@ -91,4 +94,4 @@ Adapt the slot and style utilities to the UI layer used by the project. For Swif
 
 ## SwiftPost Note
 
-If the task depends on `@swiftpost/elysium`, package-specific imports, Elysium wrappers, or `spreadSx`, load the `swiftpost-elysium` skill instead of treating those details as general styling guidance.
+If the task depends on `@swiftpost/elysium`, package-specific imports, Elysium wrappers, or `spreadSx`, load the `ref-swiftpost-elysium` skill instead of treating those details as general styling guidance.

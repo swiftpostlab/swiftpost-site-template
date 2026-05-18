@@ -14,22 +14,22 @@ Use this checklist when transplanting this repo's skills and AI-policy tooling i
 
 ## Skills
 
-- Did you copy `skills-authoring` before or alongside other skills so the target repo has a standard for skill quality?
+- Did you copy shared `ref-skills-authoring` before or alongside other skills so the target repo has a standard for skill quality?
 - Did you copy only the generic skills that actually match the target repo's stack and domains?
-- Did you avoid copying `swiftpost-*` skills unchanged into the target repo?
+- Did you avoid copying `ref-swiftpost-*` skills unchanged into the target repo?
 - If the target repo has analogous packages or layers, did you create its own repo-specific skills instead?
 - Did you update commands, package names, frameworks, file paths, and examples to match the target repo?
 - Did you update the target repo's top-level instructions so the copied skills are discoverable?
 - If you copied the top-level instructions, did you preserve the source `## Personality` section verbatim rather than paraphrasing it?
 - If the target repo already existed, did you prefer selective adoption over wholesale copying?
 - If the target repo uses userscripts, did you specify `*.user.js` or `*.user.ts` naming explicitly?
-- If the target repo uses shared root config files, did you divide rules cleanly between web, scripts, and userscripts?
 
 ## AI Safety
 
 - Did you copy `.ai-policy.json` as the source of truth?
 - Did you copy `scripts/sync-ai-policy.mts` or an adapted equivalent?
 - Did you add package scripts such as `sync:ai-policy` and `sync:ai-policy:import-vscode`?
+- AI guardrail behavior belongs in `ref-swiftpost-ai-safety` plus the top-level restricted-file policy summary.
 - Did you wire `prepare` or another bootstrap path so the generated policy files stay in sync?
 - Did you regenerate `.aiexclude`, `.claude/settings.json`, and `.vscode/settings.json` instead of treating them as hand-edited source files?
 - Did you update `.claude/CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` or the target repo's equivalent entry points to reference the shared policy model?
