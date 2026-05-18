@@ -100,4 +100,4 @@ import type { TextProps } from '@swiftpost/elysium/ui/base/Text';
 - Use `InferSlotsFromSlotProps` from `@swiftpost/elysium/ui/types` when defining slot-based APIs.
 - Wrap reusable UI primitives in `memo` and keep `componentBaseName` stable for CSS targeting.
 
-For general styling guidance that could apply outside SwiftPost, see the `ref-styling` skill.
+For SwiftPost-specific styling guidance, see the `ref-swiftpost-styling` skill.

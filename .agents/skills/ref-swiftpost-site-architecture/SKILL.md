@@ -13,6 +13,7 @@ metadata:
 Define the high-level architectural rules for the repo: how code is organized, how components are composed, how client/server boundaries work, how features stay isolated, and where files go. Favor structures that keep the codebase simple to navigate and maintain over abstractions that add indirection without clear payoff.
 
 For the SwiftPost Elysium UI library reference (components, props, imports, styling helpers), see the **ref-swiftpost-elysium** skill.
+For SwiftPost-specific styling guidance, see the **ref-swiftpost-styling** skill.
 For TypeScript/React coding patterns, see the **ref-swiftpost-code-conventions** skill.
 For Next.js-specific constraints and page patterns, see the **ref-swiftpost-next** skill.
 
@@ -34,6 +35,17 @@ For Next.js-specific constraints and page patterns, see the **ref-swiftpost-next
 | `@swiftpost/config` | `packages/config/` | Shared ESLint and TypeScript configs |
 | `@swiftpost/elysium` | `packages/elysium/` | Internal UI library — thin MUI 7 wrappers + enhanced components |
 | `@swiftpost/main` | `packages/main/` | Next.js 15 app (static export, App Router, Turbopack) |
+
+## Local Agent Workspaces
+
+The root-level `.playground/` and `.tasks/` directories are local-only agent workspaces. They are ignored by Git and excluded from AI context through `.ai-policy.json`.
+
+| Path | Purpose | Rule |
+|------|---------|------|
+| `.playground/` | Temporary helper scripts, scratch files, generated local artifacts, and other short-lived agent work. | Do not put committed source, durable documentation, or secrets here. Promote anything reusable into the proper package, script, doc, or skill. |
+| `.tasks/` | Local task tracking, backlog notes, task briefs, validation notes, and temporary planning artifacts. | Keep it local and current. Promote durable decisions into committed docs or skills instead of relying on ignored notes. |
+
+If a shared skill describes `.agents/playground/` or `.agents/tasks/` as a portable default, use `.playground/` and `.tasks/` in this repository unless the user explicitly asks for the portable layout.
 
 ## `packages/main/src/` Directory Map
 
@@ -120,7 +132,7 @@ features/<feature-name>/
 
 ## Reusable Component Architecture
 
-Reusable components that are meant to be flexible and overridable must use the Slots & SlotProps pattern. See the **ref-styling** skill for the general pattern and **ref-swiftpost-elysium** for the concrete package implementation used here.
+Reusable components that are meant to be flexible and overridable must use the Slots & SlotProps pattern. See the **ref-swiftpost-styling** skill for the local styling pattern and **ref-swiftpost-elysium** for the concrete package implementation used here.
 
 Key rules:
 * Define `SlotProps` for internal elements, `Props` with `slots?`, `slotProps`, and `sx?`.

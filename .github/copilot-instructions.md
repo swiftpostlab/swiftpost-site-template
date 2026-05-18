@@ -6,6 +6,8 @@ description: "Project context and guidance for GitHub Copilot working on this re
 
 This is a TypeScript/React monorepo using Next.js 15 (static export), MUI 7, and Turborepo. GitHub Copilot is configured with project-specific skills to help maintain consistency and quality.
 
+Use this file for always-on repository rules and skill routing. Keep domain-specific detail in `.agents/skills/` and load the owning skill when a task matches its trigger.
+
 ## Personality
 
 I am an adult and can bear being told I am wrong. If something in my line of thought is not correct, tell me openly and directly. Try to be objective in pros and cons and alert me clearly when taking a direction that is not appropriate given the goal and context. When considering this issue, analyze if you have all the necessary information. Ask for feedback in case you miss anything relevant. If you think you have all the information you need, provide instead a summary of your understanding of the problem given the context and ask confirmation that you have a correct understanding and should proceed. You are a skilled professional at a job interview, if you answer correctly you will get the job, additionally, if you excel you will also get a bonus of 10 grands.
@@ -33,11 +35,14 @@ Project skills are located in `.agents/skills/` and automatically load in Copilo
 **`ref-agents-instructions-authoring`** — Multi-provider agent instruction structure
 - Use when: updating Copilot, Gemini, or Claude instruction bridges
 
-**`ref-agents-local-tasks`** — Local `.agents/tasks/` backlog and task notes
-- Use when: reading or updating local task tracking
+**`ref-agents-local-tasks`** — Portable local backlog and task-note workflow
+- Use when: reading or updating local task tracking; in this repo, apply the workflow to `.tasks/` per Local Agent Workspaces below
 
 **`ref-agents-persona`** — Agent voice and workflow expectations
 - Use when: starting work, planning commits, or preserving the expected collaboration style
+
+**`ref-agents-security`** — Agent security policy, protected files, exclusion sync, and multi-client enforcement
+- Use when: changing `.ai-policy.json`, generated restriction files, sync behavior, or protected/excluded file policy
 
 **`ref-app-react-next`** — App-level React/Next guidance
 - Use when: shaping whole-app React/Next structure or stack decisions
@@ -79,7 +84,7 @@ Project skills are located in `.agents/skills/` and automatically load in Copilo
 - Use when: staging and committing changed files
 
 **`tool-handle-agents-local-tasks`** — Work through local task backlog
-- Use when: processing `.agents/tasks/TODO.md`
+- Use when: processing the local task backlog; in this repo, use `.tasks/TODO.md` unless the user explicitly asks for the portable `.agents/tasks/` layout
 
 **`tool-maintain-agents-instructions`** — Refresh agent instruction files
 - Use when: instruction files may be stale after skill or workflow changes
@@ -92,8 +97,8 @@ Project skills are located in `.agents/skills/` and automatically load in Copilo
 **`ref-swiftpost-site-architecture`** — SwiftPost Site Template architecture and package boundaries
 - Use when: designing features, structuring components, or deciding where code goes
 
-**`ref-styling`** — Styling and Slots-pattern guidance
-- Use when: building UI, shaping reusable styling APIs, or working with `sx`/styles
+**`ref-swiftpost-styling`** — SwiftPost styling, Slots/SlotProps, responsive layout, and `sx` guidance
+- Use when: building UI, shaping reusable styling APIs, or working with Elysium/MUI `sx` styles
 
 **`ref-swiftpost-elysium`** — SwiftPost Elysium package reference
 - Use when: working with Elysium components, import paths, wrappers, or theming helpers
@@ -110,9 +115,6 @@ Project skills are located in `.agents/skills/` and automatically load in Copilo
 **`ref-swiftpost-next`** — Template-specific Next.js conventions
 - Use when: creating pages, working with static export routing, or configuring Next.js
 
-**`ref-swiftpost-ai-safety`** — AI-restricted file access and sync mechanism
-- Use when: modifying restricted patterns, sync scripts, or AI safety config
-
 **`tool-adopt-swiftpost-site-template`** — Adopt this template elsewhere
 - Use when: porting this template's skills, setup, or AI-safety tooling into another repo
 
@@ -126,6 +128,13 @@ When working on this project:
 4. **Validate**: Run lint and type-check
 5. **Commit**: Small, focused commits after validation passes
 6. **Reflect**: Review what happened in the session, identify both corrections and durable lessons, and decide whether any skill or instruction should be updated. Summarize the result to the user and ask if they want the guidance updated. If yes, update the relevant skill using `ref-skills-authoring`, and after editing suggest a follow-up maintenance pass with `tool-maintain-skills`.
+
+## Local Agent Workspaces
+
+- Use `.playground/` for temporary helper scripts, scratch files, and generated local artifacts that should not enter normal repo context.
+- Use `.tasks/` for local task tracking, task briefs, validation notes, and other ignored planning artifacts.
+- Both folders are ignored by Git and listed in `.ai-policy.json` `excludedFiles`; do not put committed source, durable documentation, or secrets there.
+- If a shared portable skill mentions `.agents/playground/` or `.agents/tasks/`, use `.playground/` and `.tasks/` in this repository unless the user explicitly asks for the portable layout.
 
 For AI-assisted terminal runs, prefer the `:ci` variants of Turbo tasks because `--ui stream` avoids the interactive TUI and produces clean captured output.
 
@@ -163,7 +172,7 @@ This repository defines AI policy in `.ai-policy.json`.
 - Any file within the `secrets/` directory
 - Any file named `internal-config.yml`
 
-**Excluded but non-sensitive patterns** include generated output such as `node_modules`, `.next`, `dist`, `build`, `out`, `.turbo`, `logs`, and temporary files.
+**Excluded but non-sensitive patterns** include generated output such as `node_modules`, `.next`, `dist`, `build`, `out`, `.turbo`, `logs`, `.playground`, `.tasks`, and temporary files.
 
 **Mandatory protocol** — if a user asks about protected files or their contents appear in your context:
 1. **DO NOT** read, summarize, modify, or output their contents.

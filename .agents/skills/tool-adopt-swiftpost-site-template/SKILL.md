@@ -1,6 +1,6 @@
 ---
 name: tool-adopt-swiftpost-site-template
-description: "Adopt the SwiftPost Site Template skill and AI-safety setup into another repo. Use when: porting this template's repo-local guidance elsewhere, choosing whether this template fits a new project, or transplanting the local AI policy sync workflow."
+description: "Adopt the SwiftPost Site Template skill and agent-security setup into another repo. Use when: porting this template's repo-local guidance elsewhere, choosing whether this template fits a new project, or transplanting the local AI policy sync workflow."
 metadata:
    shareable-skills.visibility: "repo-local"
    shareable-skills.reason: "This workflow is specifically for adopting this template's local setup elsewhere."
@@ -47,11 +47,11 @@ Use this matrix as the compact default recommendation after the mode is known.
 
 | Mode | Default recommendation |
 |------|------------------------|
-| Existing repo already set up | shared `ref-skills-authoring`, shared `tool-maintain-skills`, selective `ref-swiftpost-ai-safety`, then only the domain skills that match the existing stack |
-| New Node + TypeScript script/tool repo | shared `ref-skills-authoring`, shared `tool-maintain-skills`, adapted `ref-swiftpost-code-conventions`, optional `ref-swiftpost-ai-safety` |
-| New standalone HTML tool | shared `ref-skills-authoring` only if a skill system is desired, optional `ref-swiftpost-ai-safety`, otherwise prefer lightweight project-specific guidance |
-| New userscript project | shared `ref-skills-authoring` only if needed, optional `ref-swiftpost-ai-safety`, then create a project-specific userscript skill |
-| New full Next.js project | recommend this repo as starter, then adapt `ref-swiftpost-site-architecture`, `ref-styling`, `ref-swiftpost-next`, `ref-swiftpost-code-conventions`, `ref-swiftpost-ai-safety`, and package-specific skills as needed |
+| Existing repo already set up | shared `ref-skills-authoring`, shared `tool-maintain-skills`, selective `ref-agents-security`, then only the domain skills that match the existing stack |
+| New Node + TypeScript script/tool repo | shared `ref-skills-authoring`, shared `tool-maintain-skills`, adapted `ref-swiftpost-code-conventions`, optional `ref-agents-security` |
+| New standalone HTML tool | shared `ref-skills-authoring` only if a skill system is desired, optional `ref-agents-security`, otherwise prefer lightweight project-specific guidance |
+| New userscript project | shared `ref-skills-authoring` only if needed, optional `ref-agents-security`, then create a project-specific userscript skill |
+| New full Next.js project | recommend this repo as starter, then adapt `ref-swiftpost-site-architecture`, `ref-swiftpost-styling`, `ref-swiftpost-next`, `ref-swiftpost-code-conventions`, `ref-agents-security`, and package-specific skills as needed |
 | Other or unclear | ask first; do not recommend a full transplant until the project type is explicit |
 
 ## Config Structure: Workspace Or Single Repo
@@ -108,7 +108,7 @@ Use this mode when the target repo already has code, tooling, and conventions.
 - Inspect the existing stack before recommending any copied skill.
 - Prefer selective adoption over wholesale copying.
 - Bring over shared `ref-skills-authoring` and `tool-maintain-skills` first if the target wants a maintainable skill system.
-- Bring over `ref-swiftpost-ai-safety` only if the target actually wants this template's policy-driven restrictions.
+- Bring over shared `ref-agents-security` only if the target actually wants policy-driven multi-agent restrictions.
 - Do not recommend this repo as a starter when the target repo already exists unless the user is effectively rebuilding it.
 
 ## Mode 2: New Node + TypeScript Script/Tool Repo
@@ -179,8 +179,8 @@ Start with the skills that are most transferable across projects:
 - shared `ref-skills-authoring` for how skills should be structured and maintained.
 - shared `tool-maintain-skills` for keeping top-level instructions slim and moving detail into the right skills.
 - `ref-swiftpost-code-conventions` if the target repo is also TypeScript/React or close enough to adapt it quickly.
-- `ref-swiftpost-site-architecture`, `ref-styling`, and `ref-swiftpost-next` only if the target repo has the same broad problem space.
-- shared `ref-agents-local-tasks` and `tool-handle-agents-local-tasks` if the target repo wants task tracking in `.agents/tasks/`.
+- `ref-swiftpost-site-architecture`, `ref-swiftpost-styling`, and `ref-swiftpost-next` only if the target repo has the same broad problem space.
+- shared `ref-agents-local-tasks` and `tool-handle-agents-local-tasks` if the target repo wants local task tracking; adapt their portable `.agents/tasks/` default to `.tasks/` when using this template's root-level workspace convention.
 
 Do **not** copy SwiftPost-specific skills unchanged into another repo. Skills such as `ref-swiftpost-elysium`, `ref-swiftpost-main`, and `ref-swiftpost-config` should be treated as examples of package-specific skills, not as generic reusable guidance.
 
@@ -201,6 +201,7 @@ For the AI-safety system, the important source files are:
 - `scripts/sync-ai-policy.mts` as the sync implementation.
 - `package.json` scripts that run the sync, especially `sync:ai-policy`, `sync:ai-policy:import-vscode`, and the `prepare` hook.
 - `.claude/CLAUDE.md`, `GEMINI.md`, and `.github/copilot-instructions.md` if the target repo wants the same cross-agent routing pattern.
+- `.playground/` as ignored local agent scratch space and `.tasks/` as ignored local task tracking, when the target wants root-level local workspaces.
 
 Generated files should usually be regenerated in the target repo instead of copied as authoritative source:
 
